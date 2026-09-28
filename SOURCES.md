@@ -2,7 +2,7 @@
 
 Primary sources reviewed 28 September 2026. The six-layer architecture, worked onboarding example and operating recommendations are the author's synthesis. The numerical examples illustrate arithmetic; no measured employer results are asserted.
 
-## Architecture research added in this revision
+## Architecture research
 
 | Source | Contribution | Boundary |
 |---|---|---|
@@ -12,7 +12,7 @@ Primary sources reviewed 28 September 2026. The six-layer architecture, worked o
 | [Kiro steering](https://kiro.dev/docs/steering/), [hooks](https://kiro.dev/docs/hooks/), [MCP](https://kiro.dev/docs/mcp/) | Reusable guidance, event-triggered commands/prompts and tool/context access. | Capabilities vary by deployment mode; instructions alone are not enforcement. |
 | [GitHub Spec Kit reference](https://github.github.com/spec-kit/reference/agentic-sdd.html) | Specification workflow and optional task-to-issue conversion. | The latter requires a GitHub origin and GitHub MCP issue tools; not Jira synchronization. |
 | [Jira](https://www.atlassian.com/jira/solutions/planning), [Azure Boards](https://learn.microsoft.com/en-us/azure/devops/boards/get-started/what-is-azure-boards?view=azure-devops), [Linear](https://linear.app/docs), [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) | Work-management alternatives. | Selection depends on existing processes, reporting and integrations. |
-| [Atlassian governed agent loops](https://www.atlassian.com/blog/jira/governed-agent-loops), Sep 2026 | Announced agent capabilities. | Agent loops, Standards and AI Review were described as private early access. |
+| [Atlassian governed agent loops](https://www.atlassian.com/blog/jira/governed-agent-loops), 10 Sep 2026 | Announced agent capabilities. | That announcement described agent loops, Standards and AI Review as private early access; verify tenant availability before relying on them. |
 | [Neo4j GraphRAG](https://neo4j.com/docs/neo4j-graphrag-python/current/user_guide_rag.html) | Vector, hybrid and graph-augmented retrieval. | Ontology, edge validation, freshness and access propagation are enterprise responsibilities. |
 | [OpenSearch](https://docs.opensearch.org/latest/vector-search/), [pgvector](https://github.com/pgvector/pgvector), [LlamaIndex](https://developers.llamaindex.ai/python/framework/) | Search, indexing and retrieval primitives. | Tool capability does not prove source authority or correct task context. |
 | [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview) | Stateful agent orchestration. | Distinct from Temporal's durable workflow role; neither is mandatory for every team. |
@@ -38,3 +38,10 @@ The full paper distinguishes DORA's five defined measures from proposed intent-t
 | [DORA metrics](https://dora.dev/guides/dora-metrics/) | Deployment stability/recovery definitions used in the field guide. | Broader intent and business-outcome measures are separately proposed. |
 
 Product names illustrate capabilities rather than a tested integration or procurement recommendation. Author background is based on the supplied professional history. The repository contains no employer implementation or client records. The worked artifacts are proposed specifications, not executed acceptance evidence.
+
+## Claim boundaries for the current revision
+
+The ONB-017 failure, hypothetical EVAL-42 pass, POL-17 rule change and held release candidate are an original design example. The fourteen revalidation scenarios are unexecuted specifications. No cited vendor or author is claimed to prescribe these IDs, the release-manifest design or this exact six-layer architecture.
+
+Ten high-impact primary sources were rechecked for this revision: Kiro specs/steering/hooks; Böckeler's SDD/context/harness articles; Spec Kit; Atlassian's announcement; Neo4j retrieval guidance; and DORA metrics. Product documentation supports candidate capabilities. The architecture must still be implemented and tested in its intended environment.
+

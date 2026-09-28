@@ -1,0 +1,76 @@
+{
+  "kind": "unexecuted-revalidation-specification",
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "RV01",
+      "scenario": "Material rule becomes effective for target cohort before release",
+      "expected": "Preserve old result; hold affected claim; review linked spec/context/behavior/tests and obtain applicable evidence."
+    },
+    {
+      "id": "RV02",
+      "scenario": "New rule exists but is not yet effective for target cohort",
+      "expected": "Resolve effective-time and cohort policy; do not apply a universal latest-version rule. Prepare future qualification as needed."
+    },
+    {
+      "id": "RV03",
+      "scenario": "Source formatting changes without behavioral effect",
+      "expected": "Record reviewed impact determination; retain evidence whose applicability is established."
+    },
+    {
+      "id": "RV04",
+      "scenario": "Coding-agent model changes but tested deterministic application artifact is unchanged",
+      "expected": "Record development provenance; do not automatically invalidate application test results; qualify the new agent for future runs."
+    },
+    {
+      "id": "RV05",
+      "scenario": "A model or prompt shipped in the product changes",
+      "expected": "Reassess affected runtime behavior and required evaluations for the release bundle."
+    },
+    {
+      "id": "RV06",
+      "scenario": "Source access revoked while context is cached",
+      "expected": "Enforce current permissions; invalidate unauthorized derived access and follow retention/access rules for historical evidence."
+    },
+    {
+      "id": "RV07",
+      "scenario": "Required retrieval source times out and returns no records",
+      "expected": "Mark retrieval unavailable; do not treat as successful empty evidence. Pause the affected decision and assign recovery."
+    },
+    {
+      "id": "RV08",
+      "scenario": "No graph edge identifies an external consumer",
+      "expected": "Expose incomplete coverage; investigate supported consumers rather than infer no impact."
+    },
+    {
+      "id": "RV09",
+      "scenario": "Implementation and generated tests share the same wrong assumption",
+      "expected": "Use domain-owned preservation/acceptance cases and review to challenge behavior; test volume alone cannot establish readiness."
+    },
+    {
+      "id": "RV10",
+      "scenario": "Artifact digest or behavior-affecting configuration changes after release approval",
+      "expected": "Reject mismatched release binding; obtain applicable checks and authorization for the actual candidate."
+    },
+    {
+      "id": "RV11",
+      "scenario": "Deployment event is duplicated or tracker update fails",
+      "expected": "Deduplicate by event/release identity; queue tracker repair; do not repeat deployment."
+    },
+    {
+      "id": "RV12",
+      "scenario": "Optional trace dashboard unavailable but required durable release evidence exists",
+      "expected": "Proceed only under declared non-blocking policy; expose telemetry lag and repair owner. Missing required records would hold release."
+    },
+    {
+      "id": "RV13",
+      "scenario": "Rule changes while an application is already in flight",
+      "expected": "Apply domain-approved effective-time/in-flight semantics; preserve prior decisions and route unresolved state to an owner."
+    },
+    {
+      "id": "RV14",
+      "scenario": "Second team adopts the existing harness template",
+      "expected": "Qualify its domain cases, sources, permissions and adapters; do not inherit the first team's business evidence."
+    }
+  ]
+}

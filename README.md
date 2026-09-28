@@ -1,62 +1,71 @@
-# Six Layers for Intent-Driven AI Delivery
+# From Intent to Production
 
-### How Jira, specifications, enterprise knowledge and coding agents become one delivery system
+### Six layers that keep business intent, enterprise knowledge and release evidence connected
 
 **A six-minute architecture brief · Mohit Mittal · September 2026**
 
-**Buy a suitable coding harness; own the enterprise context, domain interfaces and evidence that turn a requirement into a verified release.** This paper defines six layers for that investment decision, maps tools to each, and shows how they connect.
+**Buy or reuse the coding agent. Own the context, domain decisions and verification that make its changes fit your business.** The investment is a reusable delivery system: six logical layers connecting the work item to an accepted production change, with explicit owners and evidence at each boundary.
 
-[Read the full architecture paper](PAPER.md) · [Research and sources](SOURCES.md)
+[Full architecture paper](PAPER.md) · [Worked change](WORKED-EXAMPLE.md) · [Sources](SOURCES.md)
 
-## The problem a coding assistant does not solve
+## 1 · Start with a change that looks right and still fails
 
-A feature starts in Jira. Its business rules live in documents. Its dependencies live in code and people's heads. The agent receives a fraction of that context, generates a plausible implementation, and hands it to reviewers who must reconstruct what matters.
+“Catch missing documents before an advisor submits an application.” In synthetic change **ONB-017**, an agent adds a validation guard to a helper shared by save and submit. Its generated tests use complete applications. All pass; incomplete drafts can no longer save.
 
-The architecture connects **what we intended, what we knew, what we changed and how we verified it**.
+The missing decision was **what must change and what must survive**. Operations supplies the incomplete-draft example; engineering identifies the shared path. The approved behavior is now precise: preserve draft saving; check completeness at submission.
 
-## The six-layer architecture
+This example tests the architecture. The product feature itself needs no runtime LLM.
 
-[![Six-layer architecture showing concrete tools, owned interfaces and the learning loop](diagrams/six-layer-reference.png)](diagrams/six-layer-reference.png)
+## 2 · Give each layer a concrete job
 
-*Logical responsibilities, not sequential phases. Products can span layers. Tool names are candidate capabilities, not a mandatory shopping list. Open the diagram for full resolution.*
+[![Six-layer delivery architecture maps reusable tools to enterprise-owned interfaces, with control and evidence across all layers](diagrams/six-layer-reference.png)](diagrams/six-layer-reference.png)
 
-| Layer | Tools to evaluate or reuse | Enterprise responsibility |
+The layers are responsibilities, not six sequential phases or six new services. Products can span layers. For ONB-017:
+
+| Layer | Buy or reuse | What the enterprise owns |
 |---|---|---|
-| **L6 Intent** | Jira / Boards / Linear / Projects; Kiro specs **or** Spec Kit. | Outcomes, examples and work/spec/PR links. |
-| **L5 Knowledge** | Git/docs, Backstage, OpenSearch / pgvector; Neo4j when justified. | Ontology, source ownership, freshness and access. |
-| **L4 Context** | Native search; LlamaIndex / GraphRAG / managed retrieval where needed. | Authorized selection, provenance and gaps. |
-| **L3 Execution** | Kiro / approved agent, runners; orchestration where needed. | Domain adapters, isolation, budgets and escalation. |
-| **L2 Control** | CI/tests, OPA, ArchUnit, security and applicable AI evaluations. | Domain cases, policy, reviews and release criteria. |
-| **L1 Memory & Evidence** | Git/artifact stores, telemetry, OpenTelemetry / Langfuse. | Correlation, retention and curated learning. |
+| **L6 · Intent** | Jira, Boards, Linear or Projects; Kiro specs **or** Spec Kit | Outcome, save/submit examples, decisions and links between work item, spec and PR. |
+| **L5 · Knowledge** | Git/docs, catalog, search; Neo4j where useful | Authoritative rule, supported consumers, owners and maintained relationships. |
+| **L4 · Context** | Native search; retrieval frameworks when needed | Task-specific evidence, current revisions, access checks and visible gaps. |
+| **L3 · Execution** | Approved coding agent and isolated runners | Domain adapters, bounded changes, environment permissions and recovery. |
+| **L2 · Control** | Existing CI, tests, security and release tools | Preservation cases, consumer contracts, architecture checks and release criteria. |
+| **L1 · Memory & evidence** | Git/artifact stores and telemetry | Which inputs were checked, which bundle shipped, observed outcomes and reviewed learning. |
 
-## Three boundaries make the architecture work
+Start with the tracker, repository, agent and CI already in use. Build missing interfaces only after demonstrating the gap. Owning an interface does not mean writing every component.
 
-**1. Jira manages the commitment; specifications define the behavior.** Keep the established tracker. Put detailed requirements, design and acceptance examples in versioned artifacts. Kiro and Spec Kit offer specification workflows; choose a primary approach for the team. Agent steps remain execution state. Link these records through IDs, and let verified workflow events update status. “Task checked” must not mean “feature released.”
+## 3 · Connect Jira, specifications and context without creating duplicate truth
 
-**2. Knowledge is durable; context is selected.** A knowledge graph can connect policies, capabilities, services, APIs, owners and tests. Search retrieves relevant passages; graph traversal follows known relationships. A context assembler selects authorized, current evidence for a specific task. It should expose gaps and provenance. Connecting every document to an agent is not context engineering.
+In this design, **Jira owns the commitment; the versioned specification defines intended behavior; the run records an execution attempt.** Completed agent tasks cannot declare a release. Verified delivery events update the tracker; synchronization failures have a repair queue.
 
-**3. Instructions guide; controls enforce.** Steering files and skills help the agent work. Repository protections, environment permissions, destination authorization and release gates establish boundaries. Generated tests can reproduce a generated implementation's mistaken assumptions; domain examples and independently maintained checks matter.
+[Kiro's specs](https://kiro.dev/docs/specs/) and [GitHub Spec Kit](https://github.github.com/spec-kit/reference/agentic-sdd.html) are alternative ways to structure specification work. Choose a primary approach, with a clear rule for maintaining it alongside code. This follows the distinction between spec-first and maintained, spec-anchored development in [Birgitta Böckeler's analysis on Martin Fowler's site](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html).
 
-The specification distinction draws on [Birgitta Böckeler's SDD analysis on Martin Fowler's site](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html) and [Kiro's workflow](https://kiro.dev/docs/specs/). The six layers and integration boundaries are my synthesis; the full paper explains their sources and contracts.
+**Knowledge persists; context is selected for a decision.** A graph can relate a rule to requirements, services, consumers, owners and tests. Search supplies the rule text; traversal supplies known dependency paths. Neither proves the inventory complete. Native code search may find the shared helper; a graph earns its cost when maintained relationships support repeated cross-system impact questions.
 
-## What to build, and what to buy
+The context pack records selected source revisions, permissions and unresolved gaps. A discovery task can proceed with known unknowns; a release cannot rely on missing required evidence. [Knowledge-to-context design](PAPER.md#l4--context-engineering)
 
-Buy or reuse broad capabilities: tracking, coding agents, retrieval engines, runners, policy engines and telemetry. Own the business meanings and the interfaces between them: source precedence, context assembly, domain tool contracts, acceptance cases and the evidence that connects a work item to a release.
+## 4 · Keep a passing result attached to what it actually checked
 
-For a Jira/GitHub organization, begin with those platforms, one approved specification workflow, an approved agent and existing CI. Add a bounded knowledge domain. Introduce a graph when relationship queries justify its maintenance cost. Introduce a shared context service when several teams need the same assembly and access rules.
+After correcting the save/submit boundary, imagine the candidate passes the agreed cases under rule **POL-17 v4**. Before release, the domain owner makes **v5** applicable to the target cohort, changing its document requirement.
 
-Product owns the outcome; domain experts supply meaning and difficult cases; engineers own design and merged correctness; the platform team owns shared interfaces; service owners own release and recovery. A tool purchase cannot assign these responsibilities.
+[![Illustrative release review keeps the earlier passing result but holds release because the target cohort now requires a changed rule](diagrams/release-evidence.png)](diagrams/release-evidence.png)
 
-## How to tell whether it works
+The old result remains valid history. It does not establish readiness under v5. Follow the recorded relationships to affected specifications, context, behavior and tests; investigate mapping gaps; rerun affected checks and refresh the release decision. Preserve unaffected evidence when its applicability is justified.
 
-Compare similar changes and include abandoned attempts. Measure intent-to-production time, review waiting time, change failures, rework and **total cost per accepted change**, including human correction and platform costs. Inspect context freshness, missing evidence and access failures. Measure the delivered business outcome separately.
+**This is the practical value of the architecture:** a rule change produces owned engineering work rather than an unexplained green dashboard. Instructions and hooks accelerate feedback; repository, environment and destination controls enforce the release boundary.
 
-The adoption test is a second team delivering through the same interfaces without copying a bespoke harness or rebuilding an evidence pipeline. Faster code generation helps; reusable delivery capability is the larger result.
+## 5 · Fund the interfaces and the people who keep them useful
+
+Product owns the benefit; domain experts own meanings and difficult examples; engineers own design and merged correctness; the platform team owns shared access, execution and evidence interfaces; service owners own release and recovery. Limit parallel agent work to available review capacity.
+
+Start with one change class. Measure delivery time **and** human effort, review queues, change failures and total cost across all attempts. Measure the business result separately: missing-document returns, draft-save success, handling minutes and exceptions.
+
+Promote repeated failures into reviewed specifications, sources, tests or skills. Raw traces do not become trusted knowledge automatically. A model upgrade does not, by itself, invalidate unchanged deterministic application tests.
+
+**The expansion decision:** can a second team use the same interfaces with its own domain rules and acceptance cases, while improving delivery without shifting cost into review and operations? That is stronger evidence of a platform than more generated code.
 
 ---
 
-Explore the [full paper and integration contracts](PAPER.md), [operating field guide](FIELD-GUIDE.md) or [optional worked example](WORKED-EXAMPLE.md).
+**Author:** Mohit Mittal, Chief Architect, with 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare. ONB-017 and its release review are synthetic designs, not employer incidents or measured results.
 
-**About the author:** Mohit Mittal is a Chief Architect with 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare. This is an independent architecture proposal; tool combinations are candidates to evaluate.
+[Full paper](PAPER.md) · [Build/buy decisions and operating metrics](FIELD-GUIDE.md) · [Agent authority at runtime](https://github.com/appliedgenai/earned-autonomy) · [CC BY 4.0](LICENSE.md)
 
-[Separate paper: agent authority in regulated workflows](https://github.com/appliedgenai/earned-autonomy) · [Sources](SOURCES.md) · [CC BY 4.0](LICENSE.md)

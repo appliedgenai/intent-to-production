@@ -1,0 +1,62 @@
+{
+  "kind": "illustrative-change-manifest",
+  "synthetic": true,
+  "assurance": "No implementation, executed evaluation, deployment or measured result is asserted",
+  "intent": "ONB-017/v1",
+  "work_item": "CHG-42",
+  "release_candidate": {
+    "id": "REL-42",
+    "status": "held",
+    "deployed": false
+  },
+  "historical_candidate": {
+    "spec": "SP-42@r3",
+    "requirement": "REQ-42",
+    "rule": "POL-17@v4",
+    "context": "CTX-42",
+    "agent_run": "RUN-42",
+    "code_label": "a71 (illustrative; not a real SHA)",
+    "tests": "TEST-42@r2",
+    "evaluation": "EVAL-42",
+    "evaluation_status": "hypothetical_pass",
+    "historical_result": "preserve; do not overwrite"
+  },
+  "change": {
+    "rule": "POL-17@v5",
+    "applicability": "Domain owner confirms material added-document requirement effective for intended eligible cohort before proposed release",
+    "not_sufficient": "A newer revision merely existing"
+  },
+  "impact_review": {
+    "domain_owner": "confirm meaning, eligible cohort and effective-time semantics",
+    "engineering": "identify affected behavior, supported consumers and acceptance cases",
+    "platform": "find linked contexts/open changes; expose unrecorded dependencies as gaps",
+    "evidence_applicability": "EVAL-42 does not establish the changed requirement; unaffected evidence may be retained with recorded justification"
+  },
+  "pending_requalification": {
+    "spec": "SP-42@r4",
+    "context": "CTX-43",
+    "tests": "TEST-43@r3",
+    "evaluation": "EVAL-43",
+    "status": "not_performed",
+    "candidate_artifact": "REQUIRED_IMMUTABLE_DIGEST_BEFORE_RELEASE",
+    "code_or_configuration_changes": "only if required by impact review"
+  },
+  "release_contract": {
+    "requires": [
+      "immutable_artifact_and_configuration_binding",
+      "applicable_rule_cohort_and_effective_time",
+      "required_current_evidence",
+      "authorized_release_decision",
+      "owned_rollout_and_in_flight_recovery"
+    ],
+    "missing_required_evidence": "hold affected release or activation",
+    "source_of_truth": "deployment/evidence services; dashboard is a projection",
+    "sync_failure": "queue repair; never redeploy to repair a tracker status"
+  },
+  "outcomes_after_release": [
+    "missing_document_return_rate",
+    "draft_save_success",
+    "human_effort_per_eligible_application",
+    "exception_backlog_and_age"
+  ]
+}

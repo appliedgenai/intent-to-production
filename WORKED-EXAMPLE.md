@@ -1,12 +1,12 @@
 # ONB-017: catch missing documents before submission
 
-[The story](README.md) · [Ecosystem](ECOSYSTEM.md) · [Field guide](FIELD-GUIDE.md)
+[Six-minute architecture brief](README.md) · [Ecosystem](ECOSYSTEM.md) · [Field guide](FIELD-GUIDE.md)
 
 This is a synthetic specification and evidence-pack design. Identifiers below show how artifacts relate; they do not represent an implemented service, executed evaluation or employer incident.
 
 ## Intent contract
 
-**ID:** `ONB-017` · **Revision:** `v1` · **Status:** proposed
+**Intent:** `ONB-017/v1` · **Tracker:** `CHG-42` · **Specification:** `SP-42@r3` · **Status:** proposed
 
 **Outcome:** reduce avoidable missing-document returns for an explicitly agreed set of onboarding application types, while preserving draft saving and supported integration behavior.
 
@@ -59,7 +59,7 @@ sources_required:
     revision: REQUIRED_BEFORE_EXECUTION
     authority: each-supported-consumer-owner
   - kind: acceptance-cases
-    revision: ONB-017/v1
+    revision: TEST-42/r2
 known_gaps:
   - complete-consumer-inventory-not-yet-demonstrated
   - rule-effective-date-semantics-await-domain-confirmation
@@ -95,3 +95,14 @@ This decomposition has a cost: more individual changes and a transitional path. 
 | Outcome | Return reasons, draft-save failures, handling effort and exception backlog linked to the release. |
 
 If a new rule revision changes which documents are mandatory, use these links to find affected contexts, tests, pending changes and deployed cohorts. Re-evaluation can then follow known dependencies. Investigate gaps in the map rather than declaring unaffected behavior by default.
+
+
+## A rule changes before the candidate ships
+
+This is a hypothetical continuation, not an executed test result. Candidate `a71` corrects the save/submit boundary. Evaluation `EVAL-42` is imagined passing the agreed `TEST-42@r2` cases using `POL-17@v4`, `SP-42@r3` and `CTX-42`. Release candidate `REL-42` has not deployed.
+
+The domain owner then makes `POL-17@v5` effective for the intended cohort, adding a required document. Preserve EVAL-42 as a historical result; its current applicability is insufficient for the changed requirement. Hold REL-42 until the affected spec/context/tests and candidate behavior are reviewed and requalified. A graph or ordinary relationship table helps locate known dependents; neither proves that unrecorded consumers do not exist.
+
+The proposed replacement records are `SP-42@r4`, `CTX-43`, `TEST-43@r3` and `EVAL-43`; these are pending artifacts, not implied passing results. Change code/configuration if the rule requires it. Retain unaffected evidence with a documented basis and bind the final decision to the exact release bundle. Do not overwrite EVAL-42 or automatically restart deployment because tracker synchronization failed.
+
+See the [structured change manifest](examples/change-manifest.json), [revalidation scenarios](examples/revalidation-cases.json) and [release applicability discussion](PAPER.md#a-passing-evaluation-is-a-claim-about-a-particular-candidate).

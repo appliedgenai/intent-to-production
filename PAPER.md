@@ -1,25 +1,34 @@
-# Six Layers for Intent-Driven AI Delivery
+# From Intent to Production: a six-layer delivery architecture
 
-### An enterprise architecture for specifications, knowledge, context, agents, controls and learning
+### Preserve business intent through specifications, knowledge, context, execution, control and evidence
 
 *Mohit Mittal · September 2026*
 
-**Buy a suitable coding harness; own the enterprise context, domain interfaces and evidence that turn a requirement into a verified release.** This is the investment decision behind the six-layer architecture in this paper. It maps concrete tools to responsibilities and shows the contracts that connect business intent, organizational knowledge, agent execution and delivery controls.
+**Buy or reuse the coding agent. Own the context, domain decisions and verification that make its changes fit your business.** The architecture connects an agreed outcome to an accepted production change. The lasting assets are authoritative sources, maintained contracts and evidence that remains interpretable when a rule, implementation or tool changes.
 
-The six layers are **Intent, Knowledge, Context, Execution, Control, and Memory & Evidence**. They are responsibilities with interfaces, not six sequential project phases. A product can implement capabilities in several layers. The design should let teams change an agent or model without rebuilding their work-management, knowledge and assurance systems—while acknowledging that tool substitution still requires integration and evaluation.
+The six layers are **Intent, Knowledge, Context, Execution, Control, and Memory & Evidence**. They are logical responsibilities with interfaces, not six sequential project phases or six services to buy. A product can span layers; controls and evidence apply throughout. Tool substitution still requires integration and evaluation.
 
-## The key messages
+[Six-minute brief](README.md) · [Worked artifacts](WORKED-EXAMPLE.md) · [Operating field guide](FIELD-GUIDE.md)
 
-1. **Keep work management and specification connected but distinct.** Jira can own commitments and workflow state; versioned specifications own the detailed behavior to implement.
-2. **Treat knowledge as an enterprise asset and context as a task-specific product.** A knowledge graph preserves relationships. A context assembler selects authorized evidence for the current decision.
-3. **Buy the general agent harness where it fits.** Build the missing domain integrations and enforce boundaries outside model instructions.
-4. **Make specifications, architecture constraints and evaluations evolve together.** More generated documentation does not guarantee control.
-5. **Close the learning loop deliberately.** Curate results into maintained knowledge and tests; separate this from transient agent memory and retained evidence.
-6. **Measure delivery and business outcomes.** Model usage and code-generation volume are diagnostic signals, not a benefit statement.
+## One change makes the architecture concrete
+
+“Catch missing documents before an advisor submits an application.” In synthetic intent **ONB-017**, the obvious implementation adds a required-document guard to a helper shared by save and submit. Generated tests using complete applications all pass. An incomplete draft can no longer save.
+
+The code and tests agree with each other; both omit a required behavior. Operations must supply the incomplete-draft example. Engineering must find the shared path and supported consumers. Product must agree that preserving draft saving is part of success. This is an illustrative failure, not an employer incident.
+
+[![A plausible implementation breaks draft saving; an independently maintained domain example changes the design](diagrams/change-journey.png)](diagrams/change-journey.png)
+
+The architecture must carry those decisions through to production, including when their inputs change. We use one connected set of synthetic records: tracker item **CHG-42**, intent **ONB-017/v1**, specification **SP-42@r3**, rule **POL-17@v4**, context **CTX-42**, run **RUN-42**, candidate commit **a71**, evaluation **EVAL-42** and release candidate **REL-42**. These are illustrative labels, not live IDs or executed evidence.
+
+The feature is an ordinary application change; it need not contain an LLM at runtime. AI helps discover, design and implement it. The separate [Earned Autonomy paper](https://github.com/appliedgenai/earned-autonomy) addresses permission for agents acting on live business workflows.
+
+## The six-layer architecture
 
 [![Six-layer enterprise AI-DLC architecture with tool options, agent harness, shared services and feedback](diagrams/six-layer-reference.png)](diagrams/six-layer-reference.png)
 
-## What Kiro and the Fowler literature contribute
+## What AI-DLC, Kiro and the Fowler literature contribute
+
+[AWS's AI-DLC framing](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) connects inception, construction and operations through AI proposals and human decisions. This paper supplies a proposed architecture for that work in an existing enterprise; its six layers are not an AWS-prescribed stack.
 
 [Kiro's specs](https://kiro.dev/docs/specs/) make requirements, design and tasks concrete artifacts. Its [steering](https://kiro.dev/docs/steering/) carries reusable project guidance; [hooks](https://kiro.dev/docs/hooks/) trigger commands or agent prompts; [MCP support](https://kiro.dev/docs/mcp/) exposes external tools and context. These mechanisms illustrate how a developer-facing product can participate in the architecture. They do not decide the firm's source ownership, work-item semantics or risk policy.
 
@@ -37,7 +46,7 @@ This layer contains product intent, scope, acceptance examples, architecture dec
 
 Use the established work-management system when it already supports the organization. [Jira](https://www.atlassian.com/jira/solutions/planning), [Azure Boards](https://learn.microsoft.com/en-us/azure/devops/boards/get-started/what-is-azure-boards?view=azure-devops), [Linear](https://linear.app/docs) and [GitHub Projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects) are alternatives, not four systems to install. Select for portfolio needs, workflow/reporting, repository integration and team adoption. Switching trackers is not a prerequisite for AI-DLC.
 
-The architectural distinction is between three records:
+In this proposed record-authority model, distinguish three records. A suite may host more than one; the point is to make conflict resolution explicit:
 
 | Record | Authority | Recommended contents |
 |---|---|---|
@@ -53,7 +62,7 @@ The architectural distinction is between three records:
 
 **Buy/adopt:** work tracking and specification tooling. **Own:** artifact conventions, decision rights, ID/linking rules and the adapter that connects approved workflow events. This is a proposed integration pattern, not a claim of automatic native Jira–Kiro synchronization.
 
-Atlassian is also extending Jira toward agent execution. Its September 2026 announcement describes agent loops, Standards and AI Review as private early access. Evaluate tenant availability and control behavior before depending on them. Architecture boundaries remain useful even when a suite implements several capabilities. [Current announcement](https://www.atlassian.com/blog/jira/governed-agent-loops)
+Atlassian is also extending Jira toward agent execution. Its September 10, 2026 announcement describes agent loops, Standards and AI Review as private early access. Evaluate tenant availability and control behavior before depending on them. Architecture boundaries remain useful even when a suite implements several capabilities. [Current announcement](https://www.atlassian.com/blog/jira/governed-agent-loops)
 
 ## L5 — Enterprise knowledge
 
@@ -116,7 +125,7 @@ Reusable guidance, task instructions, skills, tool descriptions and runtime obse
 
 **Question:** Which agent or deterministic step performs the work, with which tools, permissions, budget and recovery behavior?
 
-A coding harness manages the working loop around a model: instructions, context, tool calls, observations, state and stopping. [Kiro](https://kiro.dev/) and [GitHub Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) are examples of purchased/general-purpose execution capabilities. Prefer adapting a suitable harness before owning a new one.
+A coding harness manages the working loop around a model: instructions, context, tool calls, observations, state and stopping. The product supplies a built-in harness. The enterprise still supplies its own guidance and feedback around it: domain examples, maintained context, architecture checks and release integration. Buying the former does not complete the latter. This distinction follows Böckeler's [coding-agent harness analysis](https://martinfowler.com/articles/harness-engineering.html). [Kiro](https://kiro.dev/) and [GitHub Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) are examples of purchased/general-purpose execution capabilities. Prefer adapting a suitable harness before owning a new one.
 
 Provide isolated workspaces, scoped credentials, tool allowlists, environment templates and reviewed domain adapters. A skill can describe how to update an API contract; it cannot grant production access. MCP is one connectivity mechanism. Its security model and destination authorization remain necessary even when the tool description sounds safe.
 
@@ -185,20 +194,45 @@ This is a reference configuration to test, not a validated procurement bundle. C
 
 ### One change across all six layers
 
-The following identifiers are synthetic. They illustrate what the components exchange for work item `CHG-42`, without prescribing a vendor schema.
+The ONB-017 records introduced above show what each layer exchanges. Every row refers to the same change. Product and domain owners establish meaning; the platform preserves links and current applicability. This is not a vendor schema.
 
 | Layer / accountable owner | Exchanged artifact | Failure or change rule |
 |---|---|---|
-| Intent / product + engineering | `CHG-42`, spec `SP-42@r3`, requirement `REQ-42`, acceptance-case references | A material scope change creates a new baseline and impact review; do not silently replace an in-flight run's spec. |
+| Intent / product + engineering | `CHG-42`, intent `ONB-017/v1`, spec `SP-42@r3`, requirement `REQ-42`, acceptance cases | A material scope change creates a new baseline and impact review; do not silently replace an in-flight run's spec. |
 | Knowledge / domain source owner | `POL-17@v4`, source revision and validated relationship references | Conflicting authoritative rules go to the domain owner; a missing rule is not permission to infer one. |
 | Context / platform with domain owner | `CTX-42`, actor/tenant scope, selected source revisions, omissions, retrieval status and expiry | Optional gaps are visible; missing required evidence pauses the affected step. An outage must not look like a successful empty search. |
 | Execution / service engineering | `RUN-42`, `CTX-42`, tools/configuration, checkpoints, proposed PR and commit `a71` | Resume from recorded state with fresh authorization checks. Unresolved questions remain attached to the run. |
-| Control / service owner + reviewers | `EVAL-42`, commit `a71`, spec `r3`, test-set/rule revisions, unresolved checks | Affected results expire when their inputs change; required evidence missing means no release. |
-| Memory & Evidence / service owner | `REL-42`, verified deployment result, unique event ID, references to the records above | Duplicate events are idempotent. Tracker-sync failure queues repair and exposes lag; it never triggers another deployment. |
+| Control / service owner + reviewers | `EVAL-42`, commit `a71`, spec `r3`, test-set/rule revisions, unresolved checks | Preserve historical results; review applicability when relevant inputs change. Required current evidence missing means no release. |
+| Memory & Evidence / service owner | Release candidate `REL-42`; deployment/outcome records when they exist; unique event ID and upstream references | Duplicate events are idempotent. Tracker-sync failure queues repair and exposes lag; it never triggers another deployment. |
 
 The failure boundary is explicit: unavailable required authorization or release evidence blocks the affected action; an unavailable convenience dashboard can lag under an owned repair process. Every adapter needs an owner, retry/reconciliation rules and a declared fail-or-continue behavior. These are proposed contracts to implement and test, not native integrations implied by the tool list.
 
 Build-versus-buy should compare integration, support, evaluation, security, migration and exit cost alongside licenses. Test representative work—including stale knowledge, access denial, tool failure and a model/provider substitution—before declaring the components interchangeable.
+
+## A passing evaluation is a claim about a particular candidate
+
+Imagine the corrected candidate preserves draft saving and passes the agreed tests under **POL-17@v4**. Before release, its domain owner makes **v5** effective for the intended cohort, with a changed document requirement. The code may be unchanged, but the proposed production behavior now includes a different rule.
+
+[![Synthetic release review distinguishes a historical pass from missing evidence for an effective rule change](diagrams/release-evidence.png)](diagrams/release-evidence.png)
+
+Keep EVAL-42 as a historical result for its original input bundle. Hold REL-42 because that evidence does not establish the new requirement. The domain owner confirms applicability and effective time; engineering identifies affected code, consumer contracts and cases; the platform finds linked contexts and open changes. Unknown dependencies remain an investigation gap.
+
+Update the specification and affected context, adapt code/configuration if necessary, rerun the affected checks and refresh the release decision. Retain unrelated results when their applicability is justified. A newer source revision alone is not enough to cancel every result: a future-effective rule, formatting correction and material current behavior change have different consequences.
+
+| Change | What to reconsider | What must not be inferred |
+|---|---|---|
+| Effective rule changes for the target cohort | Relevant requirements, context, behavior, acceptance cases and release criteria | Old tests passing means the new rule is implemented. |
+| Context access is revoked | Retrieval authorization, derived caches and access to retained evidence | Relevance or an old manifest grants continuing access. |
+| Candidate artifact/configuration changes after approval | Results and approval applicable to the exact proposed release bundle | Approval transfers to a different build because its branch name is unchanged. |
+| Coding-agent model changes; application artifact does not | Provenance and evaluations for future development runs | All deterministic application test results are automatically invalid. |
+| A model/prompt/retrieval configuration shipped in the product changes | Behavior evaluations and release criteria for that runtime component | The developer-tool and product-runtime changes have identical effects. |
+| Tracker/telemetry synchronization is delayed | Evidence capture requirements, lag and repair ownership | A dashboard problem requires redeploying the application. |
+
+The release manifest identifies immutable artifact digests and the applicable spec, rules, configuration, test-set results and required decisions. If rules are dynamic, record which resolver/version applies to which cohort and effective time, and check that binding at deployment or activation. Do not make a release claim against a mutable label such as “latest.”
+
+A minimum implementation can use repository metadata, CI artifacts and a small validation adapter; it does not require a central platform or graph for every check. The deployment service checks the required bindings and current release authorization. A dashboard shows the decision; it cannot manufacture missing evidence. Administrators and emergency exceptions remain within the firm's explicit control model.
+
+The [change manifest](examples/change-manifest.json) illustrates a held candidate; the [revalidation cases](examples/revalidation-cases.json) specify failure and recovery behavior. Both are unexecuted design artifacts. The example does not claim a functioning gate or passing integration tests.
 
 ## Patterns, anti-patterns and tradeoffs
 
@@ -206,6 +240,7 @@ Build-versus-buy should compare integration, support, evaluation, security, migr
 |---|---|---|
 | Spec-anchored evolution with small changes | Generate a large specification once and assume control | Specification maintenance and review are recurring work. |
 | Jira tracks team commitments; specs define behavior | Duplicate the full specification and every agent step across trackers | Integration and conflict-resolution rules need owners. |
+| Evidence applicability by input and change type | Rewrite historical results or invalidate every check on every change | Dependency mapping and impact review have a cost; unknowns stay visible. |
 | Curated graph plus search | Infer every relationship and treat all edges as fact | Ontology, validation and freshness cost engineering time. |
 | Task-scoped context with provenance | Connect every source and load everything | Missing-evidence detection and retrieval evaluation remain necessary. |
 | Deterministic gates plus semantic review | Treat prompt rules or a second agent as enforcement | Some judgment stays with humans; review capacity limits throughput. |
@@ -223,7 +258,7 @@ Measure at the service/team level, disclose cohort selection and include abandon
 | Question | Measure |
 |---|---|
 | Did delivery improve? | Intent-to-production median/p90 and time waiting for review; keep active effort separate. |
-| Did quality hold? | Change fail rate, recovery time, rework and defects by severity. |
+| Did quality hold? | Change fail rate, failed deployment recovery time and deployment rework rate; separately track review rework and defects by severity. |
 | Does knowledge/context work? | Source freshness, known dependency coverage, relevant authoritative evidence in sampled packs, access-control failures and unresolved gaps. |
 | Did the economics improve? | Total human, model, tool and allocated platform cost across attempts per accepted change. |
 | Can we explain the result? | Valid linked evidence records / expected records for the change class. |
@@ -237,10 +272,11 @@ Start with the current tracker, repository, approved agent and CI. Add bounded s
 
 Budget recurring work: platform teams maintain connectors, permissions and agent/tool upgrades; domain owners steward source meanings and graph relationships; engineers maintain evaluations; service owners support recovery. Include this effort in the economics, rather than treating the pilot's integration work as a one-time expense.
 
-The durable asset is a delivery system that preserves intent, knows its sources, constrains execution and learns from verified outcomes. The tools inside it can evolve. **The architecture defines what must continue to work when they do.**
+The durable asset is a delivery system that preserves intent, knows its sources, constrains execution and learns from verified outcomes. **Fund the interfaces and their operating owners; expand when a second team can reuse them with its own domain evidence and measurable benefit.**
 
 ---
 
 **Author perspective:** Mohit Mittal's background includes enterprise architecture, production LLM/RAG work at Chegg, and governed agent infrastructure and MCP servers in healthcare. This is an independent proposal informed by that experience and the sources below; the candidate product combinations and synthetic artifacts are not claimed employer deployments.
 
 [Executive overview](README.md) · [Research sources](SOURCES.md) · [Separate runtime paper: Earned Autonomy](https://github.com/appliedgenai/earned-autonomy)
+
