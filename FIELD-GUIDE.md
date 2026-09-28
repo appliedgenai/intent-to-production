@@ -1,8 +1,8 @@
 # The operating decisions behind AI-DLC
 
-[Start with the story](README.md) · [Ecosystem](ECOSYSTEM.md) · [Worked example](WORKED-EXAMPLE.md)
+[Executive overview](README.md) · [Full six-layer architecture](PAPER.md) · [Worked example](WORKED-EXAMPLE.md)
 
-The recommendations below follow the onboarding design. They are proposed engineering practices, not reported incidents or measured results from an employer.
+This guide explains operating responsibilities and measures for the six-layer architecture. The optional onboarding example illustrates several decisions. These are proposed engineering practices, not reported incidents or measured results from an employer.
 
 ## People: move judgment to where it can change the result
 

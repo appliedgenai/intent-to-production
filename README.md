@@ -1,95 +1,62 @@
-# From Intent to Production
+# Six Layers for Intent-Driven AI Delivery
 
-### AI-DLC for the codebase you already have
+### How Jira, specifications, enterprise knowledge and coding agents become one delivery system
 
-**Mohit Mittal · September 2026 · A six-minute architecture story**
+**A six-minute architecture brief · Mohit Mittal · September 2026**
 
-The request sounds small: **“Help advisors catch missing onboarding documents before they submit an application.”**
+**Buy a suitable coding harness; own the enterprise context, domain interfaces and evidence that turn a requirement into a verified release.** This paper defines six layers for that investment decision, maps tools to each, and shows how they connect.
 
-Give that sentence to a coding agent and it can add required-field validation, tests and a pull request. The tests pass. The implementation is plausible. It can still be wrong: an advisor must be able to save an incomplete draft, existing integrations may use the same endpoint, and “missing” depends on the application type and the current document rules.
+[Read the full architecture paper](PAPER.md) · [Research and sources](SOURCES.md)
 
-The difficult work is deciding which behavior should change, which must survive, and what evidence will distinguish the two.
+## The problem a coding assistant does not solve
 
-That is where I would start an **AI-driven development lifecycle (AI-DLC)**. AI investigates, proposes, implements and checks. People resolve business ambiguity and remain accountable for the result. The architecture makes those decisions available to every subsequent step.
+A feature starts in Jira. Its business rules live in documents. Its dependencies live in code and people's heads. The agent receives a fraction of that context, generates a plausible implementation, and hands it to reviewers who must reconstruct what matters.
 
-My reference points are production LLM/RAG work at Chegg and building governed agent infrastructure and MCP servers in healthcare. The onboarding change below is a worked design, not a claim about an LPL deployment.
+The architecture connects **what we intended, what we knew, what we changed and how we verified it**.
 
-## 1. Make the agent expose the missing decisions
+## The six-layer architecture
 
-Before writing the feature, ask the agent to inspect the relevant code and propose questions. Does validation run on save or submission? Which application types are eligible? Who owns the document rules? What consumes the existing response? What happens if the rule service is unavailable?
+[![Six-layer architecture showing concrete tools, owned interfaces and the learning loop](diagrams/six-layer-reference.png)](diagrams/six-layer-reference.png)
 
-Product, an operations specialist and an engineer resolve these together. The result is a short intent contract with examples:
+*Logical responsibilities, not sequential phases. Products can span layers. Tool names are candidate capabilities, not a mandatory shopping list. Open the diagram for full resolution.*
 
-| Situation | Agreed behavior |
-|---|---|
-| Save an incomplete draft | Save succeeds; missing items remain visible. |
-| Submit an eligible application with a required document missing | Submission is blocked with a specific reason. |
-| Rules cannot be determined | Preserve the draft and route an owned exception; do not report it as ready. |
-| Existing integration uses the service | Preserve its agreed interface, or deliver an explicitly versioned change. |
-
-The operations specialist supplies the awkward cases. The engineer challenges feasibility. The agent turns the agreed examples into proposed tasks and checks. This is a working session with decisions, followed by small implementation cycles.
-
-**The first useful output is a better-defined change.**
-
-## 2. Establish what the existing system actually does
-
-A wiki says the rule is checked at submission. The endpoint may also be used for saving drafts. Reading either source alone is insufficient.
-
-I would have the agent produce a change-impact map: callers, relevant code paths, rule sources, persisted states and tests. Every statement is marked as an observed behavior, an approved requirement or an unresolved assumption. An extracted rule is a hypothesis until its owner confirms whether to preserve it.
-
-Then assemble a bounded context pack: the approved intent, relevant source revisions, API contracts, domain examples and open questions. Keep “the API's unknown consumers” visible as a gap. A larger context window does not establish that a dependency has been found.
-
-This distinction matters: **a characterization test records today's behavior; an acceptance test defines the behavior we want.** They can disagree. A domain decision must resolve the disagreement before an agent changes production behavior.
-
-[![A plausible validation change becomes a dependable release when the team resolves intent, checks existing behavior, and tests the missing case](diagrams/change-journey.png)](diagrams/change-journey.png)
-
-## 3. Build the ecosystem around those decisions
-
-The six layers below make this process repeatable. Each has an output another layer can inspect.
-
-| Layer | Buy or reuse | What the enterprise must own |
+| Layer | Tools to evaluate or reuse | Enterprise responsibility |
 |---|---|---|
-| **Intent** | Planning and specification tools | The draft-versus-submit decision, acceptance examples and accountable owner. |
-| **Knowledge** | Repositories, catalog and search | Authoritative document rules, service ownership and source precedence. |
-| **Context** | Retrieval and code-navigation capabilities | A task-specific evidence pack, access filters, source revisions and explicit gaps. |
-| **Execution** | Coding agents and isolated runners | Task boundaries, approved adapters and a reviewable change. |
-| **Control** | CI, security scanning and evaluation tooling | Independent domain cases, compatibility checks and release conditions. |
-| **Evidence** | Git, telemetry and artifact storage | Links from intent to release, operational outcomes and reviewed regression cases. |
+| **L6 Intent** | Jira / Boards / Linear / Projects; Kiro specs **or** Spec Kit. | Outcomes, examples and work/spec/PR links. |
+| **L5 Knowledge** | Git/docs, Backstage, OpenSearch / pgvector; Neo4j when justified. | Ontology, source ownership, freshness and access. |
+| **L4 Context** | Native search; LlamaIndex / GraphRAG / managed retrieval where needed. | Authorized selection, provenance and gaps. |
+| **L3 Execution** | Kiro / approved agent, runners; orchestration where needed. | Domain adapters, isolation, budgets and escalation. |
+| **L2 Control** | CI/tests, OPA, ArchUnit, security and applicable AI evaluations. | Domain cases, policy, reviews and release criteria. |
+| **L1 Memory & Evidence** | Git/artifact stores, telemetry, OpenTelemetry / Langfuse. | Correlation, retention and curated learning. |
 
-For this feature, I would buy the coding harness and use the existing repository and CI. I would begin the context pack as versioned files. A custom assembler becomes worthwhile when multiple teams repeatedly struggle to assemble the same governed evidence. Its value must justify ownership, support and migration cost.
+## Three boundaries make the architecture work
 
-The shared platform supplies identity, model access, tool permissions, isolation and telemetry. Domain teams own the rules and examples. A complete ecosystem is one in which those responsibilities connect; it can start with very few new services. The [architecture guide](ECOSYSTEM.md) makes the interfaces and build/buy decisions explicit.
+**1. Jira manages the commitment; specifications define the behavior.** Keep the established tracker. Put detailed requirements, design and acceptance examples in versioned artifacts. Kiro and Spec Kit offer specification workflows; choose a primary approach for the team. Agent steps remain execution state. Link these records through IDs, and let verified workflow events update status. “Task checked” must not mean “feature released.”
 
-## 4. Make the change earn its release
+**2. Knowledge is durable; context is selected.** A knowledge graph can connect policies, capabilities, services, APIs, owners and tests. Search retrieves relevant passages; graph traversal follows known relationships. A context assembler selects authorized, current evidence for a specific task. It should expose gaps and provenance. Connecting every document to an agent is not context engineering.
 
-Suppose the agent implements validation in a shared save function. Its tests use only complete applications, so they pass.
+**3. Instructions guide; controls enforce.** Steering files and skills help the agent work. Repository protections, environment permissions, destination authorization and release gates establish boundaries. Generated tests can reproduce a generated implementation's mistaken assumptions; domain examples and independently maintained checks matter.
 
-An independently maintained case tries to save an incomplete draft. It fails immediately. That one case is more valuable than a large generated suite built around the same mistaken assumption as the implementation.
+The specification distinction draws on [Birgitta Böckeler's SDD analysis on Martin Fowler's site](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html) and [Kiro's workflow](https://kiro.dev/docs/specs/). The six layers and integration boundaries are my synthesis; the full paper explains their sources and contracts.
 
-I would split delivery into reviewable changes: establish existing interface behavior; add document assessment without changing submission; introduce the submission gate; then enable it for a controlled cohort. Each change has a reason, a test and a recovery decision. Parallel generation is useful only while reviewers can absorb the output.
+## What to build, and what to buy
 
-If a document rule changes during implementation, record which context packs, cases and pending changes are affected. Previous evaluation evidence needs review against the new rule. Updating the prompt alone leaves the delivery system reasoning from inconsistent versions.
+Buy or reuse broad capabilities: tracking, coding agents, retrieval engines, runners, policy engines and telemetry. Own the business meanings and the interfaces between them: source precedence, context assembly, domain tool contracts, acceptance cases and the evidence that connects a work item to a release.
 
-In production, instrument the consequential decision: application category, rule version, missing-document reason, outcome and exception owner, with controlled references to sensitive evidence. Link it to the release. This lets the team distinguish a bad rule, stale context, an implementation defect and a failing dependency. Model latency alone cannot do that.
+For a Jira/GitHub organization, begin with those platforms, one approved specification workflow, an approved agent and existing CI. Add a bounded knowledge domain. Introduce a graph when relationship queries justify its maintenance cost. Introduce a shared context service when several teams need the same assembly and access rules.
 
-## 5. Prove that the work improved
+Product owns the outcome; domain experts supply meaning and difficult cases; engineers own design and merged correctness; the platform team owns shared interfaces; service owners own release and recovery. A tool purchase cannot assign these responsibilities.
 
-Consider an **illustrative** change requiring 20 implementation hours, 10 review/rework hours and 40 waiting hours. AI reduces implementation to eight hours, while the other components stay constant. Coding effort falls 60%; elapsed time falls from 70 to 58 hours—about 17%—under this simplified, sequential model.
+## How to tell whether it works
 
-That is a useful saving. It is also a reason to inspect the review queue before buying more generation capacity.
+Compare similar changes and include abandoned attempts. Measure intent-to-production time, review waiting time, change failures, rework and **total cost per accepted change**, including human correction and platform costs. Inspect context freshness, missing evidence and access failures. Measure the delivered business outcome separately.
 
-Measure delivery time, review waiting and total cost per accepted change alongside failures and rework. Then measure the actual workflow: avoidable missing-document returns per eligible submission, human handling minutes, draft-save success and unresolved exceptions. Faster releases and better onboarding are separate claims, with separate evidence. The [field guide](FIELD-GUIDE.md) defines the denominators and anti-patterns.
-
-## What I would build first
-
-One team. One existing workflow. A versioned intent, a source-and-consumer map, a bounded coding agent, independent cases and a release record linked to operational outcomes.
-
-Then ask a second team to adopt it. Keep the interfaces that transfer; correct the assumptions that do not. That is the point where a useful delivery practice begins to become a platform.
-
-The advisor sees a precise explanation of what is missing and can still save their work. Operations receives fewer avoidable returns. Engineering can explain what changed and why it is safe to expand. **That is the result the lifecycle exists to produce.**
+The adoption test is a second team delivering through the same interfaces without copying a bespoke harness or rebuilding an evidence pipeline. Faster code generation helps; reusable delivery capability is the larger result.
 
 ---
 
-[Ecosystem and build/buy decisions](ECOSYSTEM.md) · [Patterns, metrics and operating decisions](FIELD-GUIDE.md) · [Worked intent and evidence pack](WORKED-EXAMPLE.md) · [Sources](SOURCES.md)
+Explore the [full paper and integration contracts](PAPER.md), [operating field guide](FIELD-GUIDE.md) or [optional worked example](WORKED-EXAMPLE.md).
 
-The six-layer architecture is my proposal. [AWS's AI-DLC methodology](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) provides the broader inception–construction–operations framing. The example's contracts, timings and rollout choices are illustrative. [CC BY 4.0](LICENSE.md).
+**About the author:** Mohit Mittal is a Chief Architect with 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare. This is an independent architecture proposal; tool combinations are candidates to evaluate.
+
+[Separate paper: agent authority in regulated workflows](https://github.com/appliedgenai/earned-autonomy) · [Sources](SOURCES.md) · [CC BY 4.0](LICENSE.md)
