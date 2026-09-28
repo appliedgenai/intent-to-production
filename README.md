@@ -6,64 +6,78 @@ Connecting business intent, enterprise knowledge and coding agents to verified r
 
 **A six-minute architecture brief · Mohit Mittal · September 2026**
 
-**Buy or reuse the coding agent. Own the context, domain decisions and verification that make its changes fit your business.** The investment is a reusable delivery system: six logical layers connecting the work item to an accepted production change, with explicit owners and evidence at each boundary.
+A coding agent can produce working code while missing a business rule or breaking behavior users rely on.
 
-[Full architecture paper](PAPER.md) · [Worked change](WORKED-EXAMPLE.md) · [Sources](SOURCES.md)
+Here, **AI-SDLC** means applying AI across the software development lifecycle. AI helps engineers design, build and verify software; the delivered feature need not use an AI model.
+
+**Buy or reuse coding capabilities. Own the business decisions, context and verification that connect them to production.** Three principles guide this proposal:
+
+- **Make intent testable.** Agree what must change, what must keep working and how success will be checked.
+- **Supply current, task-specific knowledge.** Connect specifications and coding agents to the relevant business rules and code, with clear owners and access controls.
+- **Release the change the evidence supports.** A completed agent task or passing test suite alone cannot establish readiness.
+
+[Full architecture paper](PAPER.md) · [Worked change](WORKED-EXAMPLE.md) · [Tool choices and build/buy guide](ECOSYSTEM.md)
 
 ## 1 · Start with a change that looks right and still fails
 
-“Catch missing documents before an advisor submits an application.” In synthetic change **ONB-017**, an agent adds a validation guard to a helper shared by save and submit. Its generated tests use complete applications. All pass; incomplete drafts can no longer save.
+An advisor saves a client's incomplete onboarding application as a draft, then submits it when ready. The requested improvement is: **“Catch missing documents before submission.”**
 
-The missing decision was **what must change and what must survive**. Operations supplies the incomplete-draft example; engineering identifies the shared path. The approved behavior is now precise: preserve draft saving; check completeness at submission.
+In fictional change **ONB-017**, a coding agent puts the document check in code shared by save and submit. Its tests cover only complete applications. They pass, but incomplete drafts can no longer save.
 
-This example tests the architecture. The product feature itself needs no runtime LLM.
+Operations makes draft preservation an explicit acceptance example; engineering finds the shared code path. The team moves the check to submission and tests both behaviors. **Code and generated tests can share the same mistaken assumption.** Domain examples must establish expected behavior.
 
 ## 2 · Give each layer a concrete job
 
+The six layers are this paper's proposed division of responsibilities. They are not six sequential phases or six products to install. Controls and evidence apply throughout.
+
 [![Six-layer delivery architecture maps reusable tools to enterprise-owned interfaces, with control and evidence across all layers](diagrams/six-layer-reference.png)](diagrams/six-layer-reference.png)
 
-The layers are responsibilities, not six sequential phases or six new services. Products can span layers. For ONB-017:
+*Each layer carries part of the agreed behavior through to release. Select an image for full resolution.*
 
-| Layer | Buy or reuse | What the enterprise owns |
+| Layer | Buy or reuse candidates | Enterprise responsibility in ONB-017 |
 |---|---|---|
-| **L6 · Intent** | Jira, Boards, Linear or Projects; Kiro specs **or** Spec Kit | Outcome, save/submit examples, decisions and links between work item, spec and PR. |
-| **L5 · Knowledge** | Git/docs, catalog, search; Neo4j where useful | Authoritative rule, supported consumers, owners and maintained relationships. |
-| **L4 · Context** | Native search; retrieval frameworks when needed | Task-specific evidence, current revisions, access checks and visible gaps. |
-| **L3 · Execution** | Approved coding agent and isolated runners | Domain adapters, bounded changes, environment permissions and recovery. |
-| **L2 · Control** | Existing CI, tests, security and release tools | Preservation cases, consumer contracts, architecture checks and release criteria. |
-| **L1 · Memory & evidence** | Git/artifact stores and telemetry | Which inputs were checked, which bundle shipped, observed outcomes and reviewed learning. |
+| **L6 · Intent** | Jira, Azure Boards, Linear or GitHub Projects; Kiro specs or Spec Kit | Agree the outcome and examples: drafts save; incomplete applications cannot submit. |
+| **L5 · Knowledge** | Repositories, documents, service catalog, search; Neo4j where justified | Maintain document rules, code ownership and known dependencies. |
+| **L4 · Context** | Native search; retrieval tools when needed | Select the relevant rule version, save/submit code and examples for this task; expose missing information. |
+| **L3 · Execution** | Approved coding agent and isolated runners | Produce a bounded code change with appropriate permissions and a recovery path. |
+| **L2 · Control** | Existing automated tests, security checks and release tools | Verify both new and preserved behavior; enforce access and release conditions. |
+| **L1 · Memory & evidence** | Git, artifact stores and telemetry | Link inputs, code, checks and deployment records; review outcomes for future changes. |
 
-Start with the tracker, repository, agent and CI already in use. Build missing interfaces only after demonstrating the gap. Owning an interface does not mean writing every component.
+**Owning a responsibility does not require building its software from scratch.** Start with existing tools; these candidates are not a tested product bundle.
 
 ## 3 · Connect Jira, specifications and context without creating duplicate truth
 
-In this design, **Jira owns the commitment; the versioned specification defines intended behavior; the run records an execution attempt.** Completed agent tasks cannot declare a release. Verified delivery events update the tracker; synchronization failures have a repair queue.
+In this design, **the tracker records priority, owner and delivery status; the maintained specification defines intended behavior; the agent's task list records an attempt to implement it.** These are different records, even when one product hosts several.
 
-[Kiro's specs](https://kiro.dev/docs/specs/) and [GitHub Spec Kit](https://github.github.com/spec-kit/reference/agentic-sdd.html) are alternative ways to structure specification work. Choose a primary approach, with a clear rule for maintaining it alongside code. This follows the distinction between spec-first and maintained, spec-anchored development in [Birgitta Böckeler's analysis on Martin Fowler's site](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html).
+Link the work item to the specification, code change, test results and verified deployment. Finishing an agent task cannot mark the feature released; repairing tracker status must not repeat deployment.
 
-**Knowledge persists; context is selected for a decision.** A graph can relate a rule to requirements, services, consumers, owners and tests. Search supplies the rule text; traversal supplies known dependency paths. Neither proves the inventory complete. Native code search may find the shared helper; a graph earns its cost when maintained relationships support repeated cross-system impact questions.
+[Kiro specs](https://kiro.dev/docs/specs/) and [GitHub Spec Kit](https://github.github.com/spec-kit/reference/agentic-sdd.html) are candidate specification workflows. Choose one approach and maintain agreed behavior alongside code. [Birgitta Böckeler's analysis](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html) distinguishes one-time specification work from specifications maintained through later changes.
 
-The context pack records selected source revisions, permissions and unresolved gaps. A discovery task can proceed with known unknowns; a release cannot rely on missing required evidence. [Knowledge-to-context design](PAPER.md#l4--context-engineering)
+**Knowledge is the maintained source material; context is the selection supplied for this task.** For ONB-017, that selection includes the applicable document rule, relevant code and save/submit examples, with source revisions, access checks and known gaps.
+
+A knowledge graph can connect rules to services, owners and tests to answer: **“What else could this rule change affect?”** Use it when maintained relationships justify the cost; search and catalog links may suffice. Known paths do not prove every dependency has been found. [Context design](PAPER.md#l4--context-engineering)
 
 ## 4 · Keep a passing result attached to what it actually checked
 
-After correcting the save/submit boundary, imagine the candidate passes the agreed cases under rule **POL-17 v4**. Before release, the domain owner makes **v5** applicable to the target cohort, changing its document requirement.
+Now imagine the corrected candidate passes the expanded tests under document rule **POL-17 v4**. Before release, the domain owner confirms that **v5 is effective for the planned rollout and adds a required document for those application types**. An application considered complete under v4 may now be incomplete.
 
 [![Illustrative release review keeps the earlier passing result but holds release because the target cohort now requires a changed rule](diagrams/release-evidence.png)](diagrams/release-evidence.png)
 
-The old result remains valid history. It does not establish readiness under v5. Follow the recorded relationships to affected specifications, context, behavior and tests; investigate mapping gaps; rerun affected checks and refresh the release decision. Preserve unaffected evidence when its applicability is justified.
+*The release owner holds candidate REL-42. The earlier pass remains valid history; it does not establish behavior under the new requirement. This is a hypothetical result, not an executed test.*
 
-**This is the practical value of the architecture:** a rule change produces owned engineering work rather than an unexplained green dashboard. Instructions and hooks accelerate feedback; repository, environment and destination controls enforce the release boundary.
+Review affected specifications, selected context, code or configuration and tests. Investigate dependency gaps, rerun affected checks and retain other results only where their applicability is justified.
+
+Release authorization must bind to the **exact build and configuration, applicable rules and application types, and required evidence**. Repository and deployment controls enforce that boundary. The example remains held until the missing evidence and authorization are supplied.
 
 ## 5 · Fund the interfaces and the people who keep them useful
 
-Product owns the benefit; domain experts own meanings and difficult examples; engineers own design and merged correctness; the platform team owns shared access, execution and evidence interfaces; service owners own release and recovery. Limit parallel agent work to available review capacity.
+Product owns the benefit; domain experts own rules and examples; engineers own design and correctness; the platform team owns shared integrations; service owners own release and recovery. Agent concurrency must fit the team's review capacity.
 
-Start with one change class. Measure delivery time **and** human effort, review queues, change failures and total cost across all attempts. Measure the business result separately: missing-document returns, draft-save success, handling minutes and exceptions.
+Begin with one change type, connecting the tracker and specification to permitted context, coding work, checks and release records. Compare delivery time, human effort, failures and cost across all attempts, including abandoned work. Separately measure missing-document returns, draft-save success and operations handling time.
 
-Promote repeated failures into reviewed specifications, sources, tests or skills. Raw traces do not become trusted knowledge automatically. A model upgrade does not, by itself, invalidate unchanged deterministic application tests.
+After deployment, link observed outcomes to the released version. Turn recurring failures into reviewed rules, tests or guidance—not unfiltered agent memory.
 
-**The expansion decision:** can a second team use the same interfaces with its own domain rules and acceptance cases, while improving delivery without shifting cost into review and operations? That is stronger evidence of a platform than more generated code.
+**Expand when a second team can reuse these connections with its own rules and acceptance examples—and demonstrate better delivery without shifting work into review and operations.**
 
 ---
 
@@ -75,7 +89,7 @@ Promote repeated failures into reviewed specifications, sources, tests or skills
 
 Mohit brings 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare.
 
-His focus spans RAG, agentic systems and the AI-driven development lifecycle (AI-DLC), with continuous evaluation, enforceable guardrails and agent observability. This paper applies that engineering approach to advisor and operations workflows in regulated financial services.
+His focus spans RAG, agentic systems and the AI-driven development lifecycle (AI-DLC), with continuous evaluation, enforceable guardrails and agent observability. This paper applies that approach to software delivery for advisor and operations capabilities in regulated financial services.
 
 *Independent architecture proposal. Examples are synthetic; tool combinations are candidates to evaluate.*
 

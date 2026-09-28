@@ -6,7 +6,15 @@ Connecting business intent, enterprise knowledge and coding agents to verified r
 
 *Mohit Mittal · September 2026*
 
-**Buy or reuse the coding agent. Own the context, domain decisions and verification that make its changes fit your business.** The architecture connects an agreed outcome to an accepted production change. The lasting assets are authoritative sources, maintained contracts and evidence that remains interpretable when a rule, implementation or tool changes.
+A coding agent can produce working code and still deliver the wrong business change. A missing domain rule or an overlooked existing behavior can survive both implementation and generated tests.
+
+This paper concerns **AI across the software development lifecycle (AI-SDLC)**: AI helps engineers design, build and verify software. The delivered feature need not use an AI model.
+
+**Buy or reuse the coding agent. Own the business decisions, context and verification that connect its work to production.** Three principles guide the proposed architecture:
+
+- **Make intent testable:** agree what must change, what must keep working and how success will be checked.
+- **Supply current, task-specific knowledge:** connect specifications and coding agents to relevant business rules and code, with clear owners and access controls.
+- **Release the change the evidence supports:** bind required checks and authorization to the actual build, configuration and applicable business rules.
 
 The six layers are **Intent, Knowledge, Context, Execution, Control, and Memory & Evidence**. They are logical responsibilities with interfaces, not six sequential project phases or six services to buy. A product can span layers; controls and evidence apply throughout. Tool substitution still requires integration and evaluation.
 
@@ -14,7 +22,7 @@ The six layers are **Intent, Knowledge, Context, Execution, Control, and Memory 
 
 ## One change makes the architecture concrete
 
-“Catch missing documents before an advisor submits an application.” In synthetic intent **ONB-017**, the obvious implementation adds a required-document guard to a helper shared by save and submit. Generated tests using complete applications all pass. An incomplete draft can no longer save.
+An advisor saves an unfinished client-onboarding application as a draft, then submits it when ready. The requested improvement is: “Catch missing documents before submission.” In synthetic intent **ONB-017**, a coding agent adds a document check to code shared by save and submit. Generated tests using complete applications all pass, but an incomplete draft can no longer save.
 
 The code and tests agree with each other; both omit a required behavior. Operations must supply the incomplete-draft example. Engineering must find the shared path and supported consumers. Product must agree that preserving draft saving is part of success. This is an illustrative failure, not an employer incident.
 
@@ -286,7 +294,7 @@ The durable asset is a delivery system that preserves intent, knows its sources,
 
 Mohit brings 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare.
 
-His focus spans RAG, agentic systems and the AI-driven development lifecycle (AI-DLC), with continuous evaluation, enforceable guardrails and agent observability. This paper applies that engineering approach to advisor and operations workflows in regulated financial services.
+His focus spans RAG, agentic systems and the AI-driven development lifecycle (AI-DLC), with continuous evaluation, enforceable guardrails and agent observability. This paper applies that approach to software delivery for advisor and operations capabilities in regulated financial services.
 
 *Independent architecture proposal. Examples are synthetic; tool combinations are candidates to evaluate.*
 
