@@ -60,3 +60,7 @@ Final reader and architecture reviews passed after lifecycle and software-factor
 ## Final publication verification
 
 Published content: [c458a07](https://github.com/appliedgenai/intent-to-production/commit/c458a0791fef27f86cbeb551509f7d2601989da7). All eight text files matched the reviewed publication content; both PNG blob hashes matched the local rendered files. The live GitHub opening was visually inspected and both homepage diagrams loaded at full intrinsic resolution. Final reader and architecture reviews found no material blocker. The paper remains a proposed architecture, with synthetic examples and no executed implementation or measured results.
+
+## Editorial follow-up
+
+At the user’s request, removed the opening scope explanation from the homepage and its equivalent in the full paper. The layered architecture and software-factory story establish the scope. Updated AGENTS.md to preserve this preference; no technical claims, diagrams or links changed.

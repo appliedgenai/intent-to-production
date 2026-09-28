@@ -16,7 +16,7 @@ A leader’s guide to connecting intent, knowledge, AI-assisted work and verifie
 
 The six layers are **Intent, Knowledge, Context, Execution, Control, and Memory & Evidence**. They are logical responsibilities, not six sequential phases or mandatory services. Existing products may implement several. Control and evidence apply throughout.
 
-This paper concerns AI-assisted software development; the delivered application need not contain an LLM. The contribution is the integration architecture and operating contracts around established delivery responsibilities.
+The contribution is the integration architecture and operating contracts around established delivery responsibilities.
 
 **Think of it as an AI-native software factory:** a repeatable delivery capability that improves through reviewed experience. Outcomes and decision records feed better knowledge, task context, specifications and checks for the next change.
 

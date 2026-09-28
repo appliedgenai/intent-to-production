@@ -14,8 +14,6 @@ A leader’s guide to connecting intent, knowledge, AI-assisted work and verifie
 - **Knowledge becomes task context:** agents receive applicable, permitted sources with known gaps.
 - **Evidence closes the loop:** checks support release decisions; reviewed production outcomes improve future specifications and tests.
 
-This is AI assisting software development. The software being delivered need not contain an AI model.
-
 **Think of it as an AI-native software factory:** a repeatable delivery capability that improves through reviewed experience. Outcomes and decision records feed better knowledge, task context, specifications and checks for the next change.
 
 <a id="1--start-with-a-change-that-looks-right-and-still-fails"></a>
