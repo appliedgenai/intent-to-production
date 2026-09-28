@@ -25,6 +25,8 @@ Baseline: [194dc6a](https://github.com/appliedgenai/intent-to-production/commit/
 
 ## Decisions to preserve
 
+The user-approved title is **From Intent to Production**, with subtitle **A Six-Layer Architecture for AI-Driven Software Delivery** and supporting line: “Connecting business intent, enterprise knowledge and coding agents to verified releases.” Apply this presentation consistently to the brief and full paper. This presentation follow-up preserves the reviewed architecture and diagrams. The author statement is “The future of AI depends on disciplined engineering.” The bio frames regulated financial services, evaluation, enforceable guardrails and agent observability as the focus of this paper, while retaining the supplied Chegg and healthcare experience; it does not claim LPL employment or a financial-services deployment.
+
 Keep the architecture central. A graph is conditional on useful maintained relationship queries; it is not needed to find one shared code helper. Keep Jira, specs and run state connected with explicit authority, without assuming native synchronization or insisting on separate products.
 
 Historical evidence remains true for what it checked. Applicability to changed behavior is a reviewed decision, not blanket invalidation. A material rule change must apply to the intended cohort/effective time before it causes the illustrated hold. REL-42 is a candidate, not a deployed release. Future-effective rules and nonsemantic edits have different consequences.
@@ -35,7 +37,7 @@ Measure benefit through delivery quality, total effort/cost, review capacity and
 
 ## Completion and handoff
 
-Validation passed: fifty-seven relative links/anchors, two JSON files, fourteen unique scenario IDs and six SVG sources. The brief is 951 whitespace-separated words with two images. All five figures used in the full paper were visually inspected; the two changed/new figures also received independent reader and architecture review. The validation checks document integrity, not implementation behavior.
+Validation passed: fifty-seven relative links/anchors, two JSON files, fourteen unique scenario IDs and six SVG sources. The brief is 993 whitespace-separated words with two images after the title and author-bio follow-up. All five figures used in the full paper were visually inspected; the two changed/new figures also received independent reader and architecture review. The validation checks document integrity, not implementation behavior.
 
 Publication and live GitHub verification are complete. No editorial or publication blocker remains for this revision. The design artifacts remain unexecuted specifications; actual implementation and domain validation would be separate work.
 

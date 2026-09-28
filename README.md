@@ -1,6 +1,8 @@
 # From Intent to Production
 
-### Six layers that keep business intent, enterprise knowledge and release evidence connected
+### A Six-Layer Architecture for AI-Driven Software Delivery
+
+Connecting business intent, enterprise knowledge and coding agents to verified releases.
 
 **A six-minute architecture brief · Mohit Mittal · September 2026**
 
@@ -65,7 +67,17 @@ Promote repeated failures into reviewed specifications, sources, tests or skills
 
 ---
 
-**Author:** Mohit Mittal, Chief Architect, with 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare. ONB-017 and its release review are synthetic designs, not employer incidents or measured results.
+## About the author
+
+**Mohit Mittal · Chief Architect**
+
+**The future of AI depends on disciplined engineering.**
+
+Mohit brings 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare.
+
+His focus here is AI for regulated financial services: dependable advisor and operations workflows built on continuous evaluation, enforceable guardrails, agent observability and measurable outcomes.
+
+*Independent architecture proposal. Examples are synthetic; tool combinations are candidates to evaluate.*
 
 [Full paper](PAPER.md) · [Build/buy decisions and operating metrics](FIELD-GUIDE.md) · [Agent authority at runtime](https://github.com/appliedgenai/earned-autonomy) · [CC BY 4.0](LICENSE.md)
 

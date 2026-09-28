@@ -1,6 +1,8 @@
-# From Intent to Production: a six-layer delivery architecture
+# From Intent to Production
 
-### Preserve business intent through specifications, knowledge, context, execution, control and evidence
+### A Six-Layer Architecture for AI-Driven Software Delivery
+
+Connecting business intent, enterprise knowledge and coding agents to verified releases.
 
 *Mohit Mittal · September 2026*
 
@@ -276,7 +278,17 @@ The durable asset is a delivery system that preserves intent, knows its sources,
 
 ---
 
-**Author perspective:** Mohit Mittal's background includes enterprise architecture, production LLM/RAG work at Chegg, and governed agent infrastructure and MCP servers in healthcare. This is an independent proposal informed by that experience and the sources below; the candidate product combinations and synthetic artifacts are not claimed employer deployments.
+## About the author
+
+**Mohit Mittal · Chief Architect**
+
+**The future of AI depends on disciplined engineering.**
+
+Mohit brings 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare.
+
+His focus here is AI for regulated financial services: dependable advisor and operations workflows built on continuous evaluation, enforceable guardrails, agent observability and measurable outcomes.
+
+*Independent architecture proposal. Examples are synthetic; tool combinations are candidates to evaluate.*
 
 [Executive overview](README.md) · [Research sources](SOURCES.md) · [Separate runtime paper: Earned Autonomy](https://github.com/appliedgenai/earned-autonomy)
 
