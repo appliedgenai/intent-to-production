@@ -75,7 +75,7 @@ Promote repeated failures into reviewed specifications, sources, tests or skills
 
 Mohit brings 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare.
 
-His focus here is AI for regulated financial services: dependable advisor and operations workflows built on continuous evaluation, enforceable guardrails, agent observability and measurable outcomes.
+His focus spans RAG, agentic systems and the AI-driven development lifecycle (AI-DLC), with continuous evaluation, enforceable guardrails and agent observability. This paper applies that engineering approach to advisor and operations workflows in regulated financial services.
 
 *Independent architecture proposal. Examples are synthetic; tool combinations are candidates to evaluate.*
 

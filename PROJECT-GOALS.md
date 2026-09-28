@@ -37,7 +37,9 @@ Measure benefit through delivery quality, total effort/cost, review capacity and
 
 ## Completion and handoff
 
-Validation passed: fifty-seven relative links/anchors, two JSON files, fourteen unique scenario IDs and six SVG sources. The brief is 993 whitespace-separated words with two images after the title and author-bio follow-up. All five figures used in the full paper were visually inspected; the two changed/new figures also received independent reader and architecture review. The validation checks document integrity, not implementation behavior.
+Validation passed: fifty-seven relative links/anchors, two JSON files, fourteen unique scenario IDs and six SVG sources. The brief is 1,003 whitespace-separated words with two images after the title and author-bio follow-ups. All five figures used in the full paper were visually inspected; the two changed/new figures also received independent reader and architecture review. The validation checks document integrity, not implementation behavior.
+
+The subsequent author-positioning edit explicitly includes RAG, agentic systems and the AI-driven development lifecycle (AI-DLC) in both the brief and full paper. Keep this architecture focus distinct from the supplied production Chegg and healthcare experience; do not infer an AI-DLC deployment or LPL employment. The edit changes no technical claims, links or diagrams.
 
 Publication and live GitHub verification are complete. No editorial or publication blocker remains for this revision. The design artifacts remain unexecuted specifications; actual implementation and domain validation would be separate work.
 
