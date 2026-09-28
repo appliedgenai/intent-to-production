@@ -51,7 +51,7 @@ The example's critical decisions have different owners. The domain owner settles
 
 ## Make build-versus-buy a testable decision
 
-The minimum foundation is the existing tracker, Git repository, approved agent, isolated runner and CI. Each layer below is an ownership question. A purchased service can implement an enterprise-owned contract; ownership does not require custom infrastructure.
+The minimum foundation is the existing tracker, Git repository, approved agent, isolated runner and CI. Each layer requires a build-versus-buy decision: reuse or configure a suitable existing capability, buy a missing capability, or build/adapt a component for a demonstrated gap. Compare these options against the same acceptance exercise. A purchased service can implement an enterprise-owned contract; ownership does not require custom infrastructure.
 
 | Layer | Start by adopting or configuring | Build/integrate when this gap is demonstrated | Acceptance exercise |
 |---|---|---|---|

@@ -2,35 +2,67 @@
 
 ### A Six-Layer Architecture for AI-Driven Software Delivery
 
-Connecting business intent, enterprise knowledge and coding agents to verified releases.
+A leader’s guide to connecting intent, knowledge, AI-assisted work and verified releases.
 
 *Mohit Mittal · September 2026*
 
-A coding agent can produce working code and still deliver the wrong business change. A missing domain rule or an overlooked existing behavior can survive both implementation and generated tests.
+**Enterprise AI-DLC connects an agreed business change to the knowledge, coding work and release evidence needed to deliver it.** The architecture defines what crosses those boundaries, who owns each decision and how a change remains traceable when its inputs evolve.
 
-This paper concerns **AI across the software development lifecycle (AI-SDLC)**: AI helps engineers design, build and verify software. The delivered feature need not use an AI model.
+**For leaders establishing AI-native delivery, the decision is architectural:** connect six responsibilities across people, process and technology. A coding agent and its harness cover part of execution; they do not establish the whole delivery capability. Make a **build-versus-buy decision at each layer**, including reuse of existing platforms. Three ideas organize the proposal:
 
-**Buy or reuse the coding agent. Own the business decisions, context and verification that connect its work to production.** Three principles guide the proposed architecture:
+- **Intent drives the work:** maintain agreed behavior and acceptance examples beyond the work item.
+- **Knowledge becomes task context:** select applicable, permitted sources for the work being attempted.
+- **Evidence closes the loop:** connect checks and authorization to the actual release; review outcomes before changing future guidance.
 
-- **Make intent testable:** agree what must change, what must keep working and how success will be checked.
-- **Supply current, task-specific knowledge:** connect specifications and coding agents to relevant business rules and code, with clear owners and access controls.
-- **Release the change the evidence supports:** bind required checks and authorization to the actual build, configuration and applicable business rules.
+The six layers are **Intent, Knowledge, Context, Execution, Control, and Memory & Evidence**. They are logical responsibilities, not six sequential phases or mandatory services. Existing products may implement several. Control and evidence apply throughout.
 
-The six layers are **Intent, Knowledge, Context, Execution, Control, and Memory & Evidence**. They are logical responsibilities with interfaces, not six sequential project phases or six services to buy. A product can span layers; controls and evidence apply throughout. Tool substitution still requires integration and evaluation.
+This paper concerns AI-assisted software development; the delivered application need not contain an LLM. The contribution is the integration architecture and operating contracts around established delivery responsibilities.
+
+**Think of it as an AI-native software factory:** a repeatable delivery capability that improves through reviewed experience. Outcomes and decision records feed better knowledge, task context, specifications and checks for the next change.
 
 [Six-minute brief](README.md) · [Worked artifacts](WORKED-EXAMPLE.md) · [Operating field guide](FIELD-GUIDE.md)
 
+## A software factory that improves through reviewed experience
+
+The factory metaphor means repeatable delivery with explicit quality controls and a maintained learning loop. It does not mean every change is identical or that software design becomes an unattended assembly line. AI assists discovery and judgment as well as construction; people retain accountable decisions.
+
+**The loop:** observed delivery and production outcomes → linked decision records and failure evidence → owner review → versioned improvements to knowledge, context policies, specifications and checks → evaluation on future work.
+
+A decision record should capture the question, applicable source revisions, alternatives considered, chosen approach and concise rationale, unresolved assumptions, accountable approver and links to the resulting artifact and outcome. Record decision evidence, not hidden model chain-of-thought. Apply access, redaction and retention rules; greater trace volume alone is not better learning.
+
+In the onboarding example introduced below, a rejected candidate may reveal that context omitted the draft-saving invariant. The team first determines whether the cause was missing context, an ambiguous specification or an implementation error. It then fixes the relevant asset: a maintained specification example, a context-selection rule or an independent regression check. It does not teach every future agent to copy the failed run.
+
+**L1 retains the experience; L5 publishes approved knowledge; L4 selects the revised material for a new task.** Reviewers version and test a proposed update before promotion, record its scope and owner, and retain a rollback path. Human-authored and AI-proposed updates follow the same authority rules. Updating retrieval, guidance and checks usually comes before considering model training; fine-tuning is a separate, evidence-based decision, not an automatic feedback step.
+
+Measure whether repeated failure categories decline across comparable changes, whether context-related rework falls, and how long approved learning takes to reach affected tasks. Track review effort and newly introduced regressions as countermeasures. Claim improvement only after comparing subsequent results with a stated baseline; preserve unresolved and unsuccessful attempts in the denominator.
+
+## How a leader should use this architecture
+
+AI-native delivery means deliberately embedding AI assistance across the development lifecycle while retaining accountable decisions and enforceable controls. It does not require autonomous execution of every activity. Treat the layers as a capability map, not a shopping list or an organization chart.
+
+1. **Map the current system.** For each layer identify existing platforms, authoritative records, decision owners, gaps and measurable failure demand. Include product, domain, engineering, platform, security and operations leaders.
+2. **Connect one delivery path.** Select a bounded change type. Agree the specification and independent acceptance cases; connect source access, task context, execution, verification and release records. Reuse working enterprise services.
+3. **Test the operating model.** Exercise missing or revoked context, changed requirements, failed checks, interrupted runs and duplicate events. Demonstrate who resolves each exception and how work safely resumes.
+4. **Fund proven gaps.** Compare configuration, purchase and custom implementation against the same acceptance exercises. Include integration, stewardship, evaluation, review capacity, support and exit costs. Every custom component needs an owner and support model.
+5. **Expand on evidence.** Ask a second team to reuse the contracts with its own domain rules. Compare delivery quality, total effort and cost with a stated baseline; separately measure the business outcome. More agent activity is not the expansion criterion.
+
+The [field guide](FIELD-GUIDE.md) supplies layer-specific build/buy exercises, people/process responsibilities, failure patterns and metric definitions.
+
 ## One change makes the architecture concrete
 
-An advisor saves an unfinished client-onboarding application as a draft, then submits it when ready. The requested improvement is: “Catch missing documents before submission.” In synthetic intent **ONB-017**, a coding agent adds a document check to code shared by save and submit. Generated tests using complete applications all pass, but an incomplete draft can no longer save.
+Consider synthetic intent **ONB-017/v1**: reduce onboarding applications returned for missing documents while preserving an advisor's ability to save unfinished drafts. Work item **CHG-42** records the commitment. Product, operations and engineering agree specification **SP-42@r3**, including expected submission behavior and preserved draft saving.
 
-The code and tests agree with each other; both omit a required behavior. Operations must supply the incomplete-draft example. Engineering must find the shared path and supported consumers. Product must agree that preserving draft saving is part of success. This is an illustrative failure, not an employer incident.
+The request alone does not contain the applicable document rule, relevant application code, interface contracts or ownership information. The knowledge responsibility maintains these sources and known relationships. The context responsibility selects the applicable **POL-17@v4** passages, code and examples into **CTX-42**, with source revisions, access scope and gaps.
 
-[![A plausible implementation breaks draft saving; an independently maintained domain example changes the design](diagrams/change-journey.png)](diagrams/change-journey.png)
+The coding agent performs **RUN-42** and proposes candidate **a71**. Required checks are linked as **EVAL-42**; domain-owned acceptance examples remain independent inputs to verification. Release candidate **REL-42** links the exact proposed build and configuration to applicable rules, evidence and authorization.
 
-The architecture must carry those decisions through to production, including when their inputs change. We use one connected set of synthetic records: tracker item **CHG-42**, intent **ONB-017/v1**, specification **SP-42@r3**, rule **POL-17@v4**, context **CTX-42**, run **RUN-42**, candidate commit **a71**, evaluation **EVAL-42** and release candidate **REL-42**. These are illustrative labels, not live IDs or executed evidence.
+[![The same change connects intent and knowledge to context, a coding candidate, independent verification and conditional delivery, with retained evidence and reviewed feedback](diagrams/connected-delivery.png)](diagrams/connected-delivery.png)
 
-The feature is an ordinary application change; it need not contain an LLM at runtime. AI helps discover, design and implement it. The separate [Earned Autonomy paper](https://github.com/appliedgenai/earned-autonomy) addresses permission for agents acting on live business workflows.
+These are illustrative records, not a completed integration or executed results. REL-42 remains held in the later rule-change scenario. After an actual authorized deployment, its receipt and observed workflow outcomes would complete the record and inform reviewed updates to sources, specifications or tests.
+
+The save/submit regression below is one example of a control catching a faulty implementation. Reuse, explicit handoffs and evidence across changes are the enterprise design problem.
+
+The separate [Earned Autonomy paper](https://github.com/appliedgenai/earned-autonomy) addresses agents acting on live business workflows.
 
 ## The six-layer architecture
 
@@ -70,7 +102,7 @@ In this proposed record-authority model, distinguish three records. A suite may 
 
 [![Work tracking, versioned specifications and agent execution connected by identifiers and release evidence](diagrams/jira-spec-delivery.png)](diagrams/jira-spec-delivery.png)
 
-**Buy/adopt:** work tracking and specification tooling. **Own:** artifact conventions, decision rights, ID/linking rules and the adapter that connects approved workflow events. This is a proposed integration pattern, not a claim of automatic native Jira–Kiro synchronization.
+**Buy/reuse:** work tracking and specification tooling. **Build/adapt if needed:** a work/specification/PR adapter when supported integrations cannot preserve identifiers and approved state transitions. **Accountable in either choice:** artifact conventions, decision rights, ID/linking rules and the adapter that connects approved workflow events. This is a proposed integration pattern, not a claim of automatic native Jira–Kiro synchronization.
 
 Atlassian is also extending Jira toward agent execution. Its September 10, 2026 announcement describes agent loops, Standards and AI Review as private early access. Evaluate tenant availability and control behavior before depending on them. Architecture boundaries remain useful even when a suite implements several capabilities. [Current announcement](https://www.atlassian.com/blog/jira/governed-agent-loops)
 
@@ -111,7 +143,7 @@ This is a candidate investigation set, not proof of complete impact coverage. So
 
 Start with a bounded domain and demonstrated relationship queries. If catalog links and ordinary search answer them adequately, a graph database can wait. A graph is justified by useful queries and maintained relationships, not by the label “agentic.”
 
-**Buy/adopt:** source platforms, catalog, index and graph engine. **Own:** ontology, entity resolution, source precedence, permission propagation, ingestion quality and stewardship. The domain owns semantics; the platform owns reliable access and indexing.
+**Buy/reuse:** source platforms, catalog, index and graph engine. **Build/adapt if needed:** domain source connectors and relationship validation when native indexing cannot preserve required semantics and access. **Accountable in either choice:** ontology, entity resolution, source precedence, permission propagation, ingestion quality and stewardship. The domain owns semantics; the platform owns reliable access and indexing.
 
 ## L4 — Context engineering
 
@@ -129,11 +161,13 @@ A practical context pack contains the selected requirements, applicable ADRs, re
 
 Reusable guidance, task instructions, skills, tool descriptions and runtime observations all consume context. Böckeler's [context-engineering analysis](https://martinfowler.com/articles/exploring-gen-ai/context-engineering-coding-agents.html) is useful here: loading mechanisms and scope matter. Apply general guidance sparingly, load domain detail when relevant, and enforce critical restrictions outside the prompt.
 
-**Buy/adopt:** retrieval primitives and connectors. **Own:** task-specific assembly policy, source ordering, access checks, context manifests and evaluations for omissions, stale evidence and unauthorized retrieval. Build a shared assembler when repeated use and measured failures justify it; start with versioned repository packs when they suffice.
+**Buy/reuse:** retrieval primitives and connectors. **Build/adapt if needed:** a task-context assembler when repeated selection or freshness failures justify a shared service. **Accountable in either choice:** task-specific assembly policy, source ordering, access checks, context manifests and evaluations for omissions, stale evidence and unauthorized retrieval. Build a shared assembler when repeated use and measured failures justify it; start with versioned repository packs when they suffice.
 
 ## L3 — Agent execution and orchestration
 
 **Question:** Which agent or deterministic step performs the work, with which tools, permissions, budget and recovery behavior?
+
+Execution serves approved tasks across requirements, design, implementation and verification. Outputs may be a proposed specification, design alternative, code change or review finding, with task-specific context and evaluation. This example follows a coding run; it does not limit the layer to coding or require autonomous agents for every activity.
 
 A coding harness manages the working loop around a model: instructions, context, tool calls, observations, state and stopping. The product supplies a built-in harness. The enterprise still supplies its own guidance and feedback around it: domain examples, maintained context, architecture checks and release integration. Buying the former does not complete the latter. This distinction follows Böckeler's [coding-agent harness analysis](https://martinfowler.com/articles/harness-engineering.html). [Kiro](https://kiro.dev/) and [GitHub Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) are examples of purchased/general-purpose execution capabilities. Prefer adapting a suitable harness before owning a new one.
 
@@ -149,13 +183,22 @@ Parallel agents are useful for genuinely separable work. Partition ownership, is
 
 Model selection should use task evaluations: extraction, code analysis, planning and semantic review may need different cost/latency/quality tradeoffs. Track total successful-task cost, including retries and human correction. Evaluate fallbacks before use. Keep permission decisions and critical invariants deterministic.
 
-**Buy/adopt:** models, coding harnesses, runners and orchestration primitives. **Own:** domain adapters, decomposition, isolation, budgets, escalation and integration with control/evidence interfaces. Custom orchestration has a maintenance and on-call cost; a polished prototype is not an operating model.
+**Buy/reuse:** models, coding harnesses, runners and orchestration primitives. **Build/adapt if needed:** domain tool adapters and recovery integration when the purchased harness cannot meet a required workflow through configuration. **Accountable in either choice:** domain adapters, decomposition, isolation, budgets, escalation and integration with control/evidence interfaces. Custom orchestration has a maintenance and on-call cost; a polished prototype is not an operating model.
 
 ## L2 — Evaluation and control
 
 **Question:** What may this run do, and what evidence permits a change to merge and ship?
 
 Control runs throughout the lifecycle. It checks context access, constrains tool execution, evaluates artifacts and governs release. It must not be interpreted as a single approval meeting after code generation.
+
+### One acceptance case within the delivery system
+
+A plausible implementation places the document check in code shared by save and submit. Agent-generated tests using complete applications pass, but incomplete drafts cannot save. The domain-owned preservation case exposes the regression. Engineering confines the check to submission and verifies both behaviors. This is an illustrative failure, not an employer incident or executed test.
+
+[![A preservation case catches a document check incorrectly placed in shared save and submit code](diagrams/change-journey.png)](diagrams/change-journey.png)
+
+This check consumes the behavior agreed in L6, exercises the candidate produced in L3 and contributes a result to L1. It is one control within the connected architecture.
+
 
 Use an evaluation ladder: intent consistency and acceptance examples; context/source correctness; deterministic unit/integration/contract tests; security and architecture checks; model-behavior evaluations where a model is involved; and observed production outcomes. Calibrate model judges against labeled cases and review their errors.
 
@@ -165,7 +208,7 @@ An architectural fitness function makes a rule inspectable: forbidden dependency
 
 Bind evaluation evidence to code, spec, source, rule, model/tool and configuration revisions as applicable. Material changes trigger impact review and reruns. Local hooks improve feedback speed; protected repository, environment and destination controls enforce the boundary within the defined trust model. Administrator exceptions and bypass permissions require separate governance and evidence.
 
-**Buy/adopt:** policy/testing/security/deployment tools. **Own:** risk classification, expected outcomes, evaluation sets, reviewer routing, exceptions and release criteria. Domain experts supply difficult examples before implementation. Engineers own merged behavior. Security and risk partners define proportionate controls.
+**Buy/reuse:** policy/testing/security/deployment tools. **Build/adapt if needed:** domain acceptance checks and release-evidence binding when existing controls cannot enforce the required decision. **Accountable in either choice:** risk classification, expected outcomes, evaluation sets, reviewer routing, exceptions and release criteria. Domain experts supply difficult examples before implementation. Engineers own merged behavior. Security and risk partners define proportionate controls.
 
 ## L1 — Memory, evidence and organizational learning
 
@@ -185,7 +228,7 @@ Agent observability should explain failed tool calls, repeated attempts, context
 
 The learning loop is **observe → investigate → review/redact → update a test, source or skill → evaluate → publish the new version**. Raw traces do not become trusted knowledge merely by being embedded. An incident-driven rule change should be traceable back to the evidence that justified it.
 
-**Buy/adopt:** collection, storage and analytics. **Own:** correlation, evidence classification, access/retention, capture coverage and curation. The knowledge layer serves approved assets; this layer records experience and controls promotion into those assets.
+**Buy/reuse:** collection, storage and analytics. **Build/adapt if needed:** cross-system evidence correlation and reviewed-learning workflows when existing analytics cannot reconstruct a change. **Accountable in either choice:** correlation, evidence classification, access/retention, capture coverage and curation. The knowledge layer serves approved assets; this layer records experience and controls promotion into those assets.
 
 ## One concrete reference deployment
 

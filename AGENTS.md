@@ -8,6 +8,8 @@ A senior platform leader should understand the investment decision in a six-minu
 
 The thesis is to adopt broad coding capabilities while owning enterprise context, domain decisions, integration contracts and applicable release evidence. Explain how another team reuses these interfaces with its own domain evidence. A faster generator alone is not a business result.
 
+The example must demonstrate the thesis: follow one change package through work tracking, maintained specifications, authoritative sources, task context, coding execution, independent checks and release records. State what crosses each connection and who owns it. A save/submit regression illustrates one acceptance check; it cannot by itself justify the six-layer ecosystem. Keep that failure subordinate to the connected delivery story. The rule-change hold tests the connections rather than replacing the main story.
+
 ## Boundaries to preserve
 
 - Six layers are logical responsibilities, not six lifecycle phases, six mandatory products or six microservices. Control and evidence apply throughout.
@@ -38,3 +40,9 @@ Do not invent deployments, savings, incidents, benchmarks or personal experience
 - Check relative links/anchors, relevant JSON/SVG syntax and actual GitHub rendering. Compare published file blobs to reviewed local files. Record publication and outstanding limits in PROJECT-GOALS.md.
 
 An earlier completed review does not certify later revisions. Preserve historical evidence and existing repository history.
+
+## Leader-guide requirement
+
+The audience is any leader establishing AI-native delivery. Present a layered people/process/technology capability architecture, not a coding-harness selection guide. Explain an adoption sequence and success measures. Use Build vs. Buy as the decision framing; reuse is an option within it. Separate custom software candidates from enterprise accountability: buying an implementation does not transfer ownership of business meaning, access or release decisions.
+
+Frame the architecture as an AI-native software factory with reviewed continuous improvement. Decision records contain sources, alternatives, rationale, owners and outcomes, never private chain-of-thought. L1 experience is reviewed before promotion to L5 approved knowledge and L4 task selection. Include versioning, evaluation and rollback; do not imply automatic training or improvement from trace accumulation.

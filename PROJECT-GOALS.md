@@ -8,7 +8,7 @@ Make the six-layer AI-DLC architecture a clear, credible enterprise investment a
 
 The user approved the revised Earned Autonomy paper and requested the same depth and clarity here. The repositories remain separate. This article concerns AI-assisted software delivery, including ordinary deterministic applications; it is not another runtime-agent autonomy ladder.
 
-## Current revision — published and verified
+## Prior published revision — historical record
 
 Published in [6172d58](https://github.com/appliedgenai/intent-to-production/commit/6172d58256ff43fa7eb17952f4cfca1ea32a3aec). All sixteen changed/new file blobs matched the reviewed local files exactly. The live GitHub brief and full-paper sections were inspected; both brief images and all five full-paper images loaded successfully.
 
@@ -41,6 +41,18 @@ Validation passed: fifty-seven relative links/anchors, two JSON files, fourteen 
 
 The subsequent author-positioning edit explicitly includes RAG, agentic systems and the AI-driven development lifecycle (AI-DLC) in both the brief and full paper. Keep this architecture focus distinct from the supplied production Chegg and healthcare experience; do not infer an AI-DLC deployment or LPL employment. The edit changes no technical claims, links or diagrams.
 
-Publication and live GitHub verification are complete. No editorial or publication blocker remains for this revision. The design artifacts remain unexecuted specifications; actual implementation and domain validation would be separate work.
+Publication and live GitHub verification were complete for the prior revision described above. The design artifacts remain unexecuted specifications; actual implementation and domain validation would be separate work.
 
 For future edits, read [AGENTS.md](AGENTS.md), [SOURCES.md](SOURCES.md) and the affected artifacts first. No implementation, integration test, model benchmark or measured business result is claimed by this paper.
+
+## Current leader-guide revision
+
+This revision supersedes the prior narrative and interim readability commit 5a4b9ed. The user clarified that the paper must guide any leader establishing AI-native delivery, not focus on buying a coding harness. Keep the six-layer people/process/technology architecture central, with build-versus-buy choices and an adoption sequence. Execution and context support requirements, design, implementation and verification; the coding run illustrates one path.
+
+The homepage now pairs a connected-delivery diagram with a build/buy map. Enterprise accountability is distinct from custom implementation. The synthetic example follows exchanged artifacts across the architecture; the save/submit bug is subordinate to this story.
+
+The software-factory framing adds reviewed continuous improvement: outcomes and decision records → review → versioned knowledge/context/specification/check updates → evaluation of later work. Decision records are auditable summaries, not private model reasoning. No automatic retraining or measured improvement is claimed.
+
+Supporting line: “A leader’s guide to connecting intent, knowledge, AI-assisted work and verified releases.” Preserve the existing title and author statement. Independent reviews cover architecture, sources and first-reader clarity; final publication verification is recorded below when complete.
+
+Final reader and architecture reviews passed after lifecycle and software-factory additions, including both current PNGs. Source review found no material unsupported product claims. Local validation: 63 relative links/anchors, two JSON files, fourteen scenario IDs and seven SVGs; no errors. Brief: 1,190 words. These checks validate document integrity, not a running implementation.
