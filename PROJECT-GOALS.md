@@ -8,7 +8,9 @@ Make the six-layer AI-DLC architecture a clear, credible enterprise investment a
 
 The user approved the revised Earned Autonomy paper and requested the same depth and clarity here. The repositories remain separate. This article concerns AI-assisted software delivery, including ordinary deterministic applications; it is not another runtime-agent autonomy ladder.
 
-## Current revision — publication pending
+## Current revision — published and verified
+
+Published in [6172d58](https://github.com/appliedgenai/intent-to-production/commit/6172d58256ff43fa7eb17952f4cfca1ea32a3aec). All sixteen changed/new file blobs matched the reviewed local files exactly. The live GitHub brief and full-paper sections were inspected; both brief images and all five full-paper images loaded successfully.
 
 Baseline: [194dc6a](https://github.com/appliedgenai/intent-to-production/commit/194dc6a06821f42c15f3948778ac0ea3ea3e4efd).
 
@@ -35,6 +37,6 @@ Measure benefit through delivery quality, total effort/cost, review capacity and
 
 Validation passed: fifty-seven relative links/anchors, two JSON files, fourteen unique scenario IDs and six SVG sources. The brief is 951 whitespace-separated words with two images. All five figures used in the full paper were visually inspected; the two changed/new figures also received independent reader and architecture review. The validation checks document integrity, not implementation behavior.
 
-Publication and live GitHub verification remain to complete. Preserve repository history and record the resulting commit here.
+Publication and live GitHub verification are complete. No editorial or publication blocker remains for this revision. The design artifacts remain unexecuted specifications; actual implementation and domain validation would be separate work.
 
 For future edits, read [AGENTS.md](AGENTS.md), [SOURCES.md](SOURCES.md) and the affected artifacts first. No implementation, integration test, model benchmark or measured business result is claimed by this paper.
