@@ -44,22 +44,28 @@ These choices expose the tradeoff: blocking uncertain submissions can protect co
 
 ## Context manifest
 
+This earlier discovery snapshot records unresolved inputs. It is not the implementation pack CTX-42 used later in the example. Null revisions mean unavailable evidence, not an invitation to infer a current version.
+
 ```yaml
 intent: ONB-017/v1
+stage: discovery
 task: assess-change-impact
 environment: isolated-development
 sources_required:
   - kind: document-rule
-    revision: REQUIRED_BEFORE_EXECUTION
+    revision: null
+    status: unresolved
     authority: operations-rule-owner
   - kind: save-and-submit-code
-    revision: REQUIRED_COMMIT_SHA
+    revision: null
+    status: unresolved
     authority: onboarding-service-owner
   - kind: consumer-contracts
-    revision: REQUIRED_BEFORE_EXECUTION
+    revision: null
+    status: unresolved
     authority: each-supported-consumer-owner
   - kind: acceptance-cases
-    revision: TEST-42/r2
+    revision: TEST-42@r2
 known_gaps:
   - complete-consumer-inventory-not-yet-demonstrated
   - rule-effective-date-semantics-await-domain-confirmation
@@ -71,7 +77,7 @@ blocked_work:
   - assume-unknown-consumers-do-not-exist
 ```
 
-The placeholders are intentional. A source's missing revision must be resolved before a decision relies on it. The pack can support discovery while remaining insufficient for release.
+Discovery may identify missing sources and owners. It cannot establish behavior that depends on unavailable inputs. Before implementation, resolve the required source revisions, confirm effective-date semantics and issue a new bound context pack. The later CTX-42 episode assumes those steps have occurred; it does not turn this discovery snapshot into release evidence.
 
 ## Change decomposition
 

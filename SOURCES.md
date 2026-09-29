@@ -43,5 +43,5 @@ Product names illustrate capabilities rather than a tested integration or procur
 
 The ONB-017 failure, hypothetical EVAL-42 pass, POL-17 rule change and held release candidate are an original design example. The fourteen revalidation scenarios are unexecuted specifications. No cited vendor or author is claimed to prescribe these IDs, the release-manifest design or this exact six-layer architecture.
 
-Ten high-impact primary sources were rechecked for this revision: Kiro specs/steering/hooks; Böckeler's SDD/context/harness articles; Spec Kit; Atlassian's announcement; Neo4j retrieval guidance; and DORA metrics. Product documentation supports candidate capabilities. The architecture must still be implemented and tested in its intended environment.
+Product documentation supports candidate capabilities. The architecture must still be implemented and tested in its intended environment.
 

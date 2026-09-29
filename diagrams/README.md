@@ -1,6 +1,6 @@
 # Architecture diagrams
 
-- [One connected change from intent and knowledge to conditional release](connected-delivery.png)
+- [Six responsibilities connected from intent to release and reviewed learning](connected-delivery.png)
 - [Six-layer reference architecture](six-layer-reference.png)
 - [Jira, specifications and delivery](jira-spec-delivery.png)
 - [Knowledge versus task context](knowledge-to-context.png)

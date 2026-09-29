@@ -6,19 +6,15 @@ A leader’s guide to connecting intent, knowledge, AI-assisted work and verifie
 
 *Mohit Mittal · September 2026*
 
-**Enterprise AI-DLC connects an agreed business change to the knowledge, coding work and release evidence needed to deliver it.** The architecture defines what crosses those boundaries, who owns each decision and how a change remains traceable when its inputs evolve.
+An enterprise can give teams AI coding tools and still struggle to turn a business request into a reliable production change. If requirements, domain rules, code and release decisions are disconnected, faster implementation can move work into clarification, review and recovery.
 
-**For leaders establishing AI-native delivery, the decision is architectural:** connect six responsibilities across people, process and technology. A coding agent and its harness cover part of execution; they do not establish the whole delivery capability. Make a **build-versus-buy decision at each layer**, including reuse of existing platforms. Three ideas organize the proposal:
+**The AI-driven development lifecycle (AI-DLC) needs a delivery architecture around the agent.** This paper organizes it into six responsibilities: **Intent, Knowledge, Context, Execution, Control, and Memory & Evidence.** Together they connect what the business wants, what the team and agent need to know, what they produce and the evidence for releasing it.
 
-- **Intent drives the work:** maintain agreed behavior and acceptance examples beyond the work item.
-- **Knowledge becomes task context:** select applicable, permitted sources for the work being attempted.
-- **Evidence closes the loop:** connect checks and authorization to the actual release; review outcomes before changing future guidance.
+For a leader, the decision is where to reuse existing capabilities, buy missing ones or build justified integrations—and who will operate them. The aim is shorter delivery time and less total effort while preserving quality, measured across the whole change.
 
-The six layers are **Intent, Knowledge, Context, Execution, Control, and Memory & Evidence**. They are logical responsibilities, not six sequential phases or mandatory services. Existing products may implement several. Control and evidence apply throughout.
+**An AI-native software factory is that repeatable delivery system with a reviewed learning loop.** Findings from delivery and production become approved updates to specifications, knowledge, context and checks. Each new change can use those improvements; better results must still be demonstrated.
 
-The contribution is the integration architecture and operating contracts around established delivery responsibilities.
-
-**Think of it as an AI-native software factory:** a repeatable delivery capability that improves through reviewed experience. Outcomes and decision records feed better knowledge, task context, specifications and checks for the next change.
+The layers are logical responsibilities, not six lifecycle phases or mandatory services. Control and evidence apply throughout. Existing products may implement several responsibilities.
 
 [Six-minute brief](README.md) · [Worked artifacts](WORKED-EXAMPLE.md) · [Operating field guide](FIELD-GUIDE.md)
 
@@ -30,7 +26,7 @@ The factory metaphor means repeatable delivery with explicit quality controls an
 
 A decision record should capture the question, applicable source revisions, alternatives considered, chosen approach and concise rationale, unresolved assumptions, accountable approver and links to the resulting artifact and outcome. Record decision evidence, not hidden model chain-of-thought. Apply access, redaction and retention rules; greater trace volume alone is not better learning.
 
-In the onboarding example introduced below, a rejected candidate may reveal that context omitted the draft-saving invariant. The team first determines whether the cause was missing context, an ambiguous specification or an implementation error. It then fixes the relevant asset: a maintained specification example, a context-selection rule or an independent regression check. It does not teach every future agent to copy the failed run.
+In the onboarding example introduced below, a rejected candidate may reveal that context omitted the requirement that users can save unfinished applications. The team first determines whether the cause was missing context, an ambiguous specification or an implementation error. It then fixes the relevant asset: a maintained specification example, a context-selection rule or an independent regression check. It does not teach every future agent to copy the failed run.
 
 **L1 retains the experience; L5 publishes approved knowledge; L4 selects the revised material for a new task.** Reviewers version and test a proposed update before promotion, record its scope and owner, and retain a rollback path. Human-authored and AI-proposed updates follow the same authority rules. Updating retrieval, guidance and checks usually comes before considering model training; fine-tuning is a separate, evidence-based decision, not an automatic feedback step.
 
@@ -40,7 +36,7 @@ Measure whether repeated failure categories decline across comparable changes, w
 
 AI-native delivery means deliberately embedding AI assistance across the development lifecycle while retaining accountable decisions and enforceable controls. It does not require autonomous execution of every activity. Treat the layers as a capability map, not a shopping list or an organization chart.
 
-1. **Map the current system.** For each layer identify existing platforms, authoritative records, decision owners, gaps and measurable failure demand. Include product, domain, engineering, platform, security and operations leaders.
+1. **Map the current system.** For each layer identify existing platforms, authoritative records, decision owners, gaps and recurring rework and recovery effort. Include product, domain, engineering, platform, security and operations leaders.
 2. **Connect one delivery path.** Select a bounded change type. Agree the specification and independent acceptance cases; connect source access, task context, execution, verification and release records. Reuse working enterprise services.
 3. **Test the operating model.** Exercise missing or revoked context, changed requirements, failed checks, interrupted runs and duplicate events. Demonstrate who resolves each exception and how work safely resumes.
 4. **Fund proven gaps.** Compare configuration, purchase and custom implementation against the same acceptance exercises. Include integration, stewardship, evaluation, review capacity, support and exit costs. Every custom component needs an owner and support model.
@@ -58,7 +54,7 @@ The coding agent performs **RUN-42** and proposes candidate **a71**. Required ch
 
 [![The same change connects intent and knowledge to context, a coding candidate, independent verification and conditional delivery, with retained evidence and reviewed feedback](diagrams/connected-delivery.png)](diagrams/connected-delivery.png)
 
-These are illustrative records, not a completed integration or executed results. REL-42 remains held in the later rule-change scenario. After an actual authorized deployment, its receipt and observed workflow outcomes would complete the record and inform reviewed updates to sources, specifications or tests.
+The diagram shows the general delivery flow; the records above apply it to this example. These are illustrative records, not a completed integration or executed results. REL-42 remains held in the later rule-change scenario. After an actual authorized deployment, its receipt and observed workflow outcomes would complete the record and inform reviewed updates to sources, specifications or tests.
 
 The save/submit regression below is one example of a control catching a faulty implementation. Reuse, explicit handoffs and evidence across changes are the enterprise design problem.
 
@@ -335,7 +331,7 @@ The durable asset is a delivery system that preserves intent, knows its sources,
 
 **The future of AI depends on disciplined engineering.**
 
-Mohit brings 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg and governed agent infrastructure and MCP servers in healthcare.
+Mohit brings 22+ years in enterprise architecture and distributed systems, including production LLM/RAG work at Chegg, target-state architecture for an AI-native healthcare platform, and AI-assisted development frameworks for distributed teams.
 
 His focus spans RAG, agentic systems and the AI-driven development lifecycle (AI-DLC), with continuous evaluation, enforceable guardrails and agent observability. This paper applies that approach to software delivery for advisor and operations capabilities in regulated financial services.
 
