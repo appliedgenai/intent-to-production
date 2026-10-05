@@ -30,9 +30,9 @@ For a leader, the decision is where to reuse existing capabilities, buy missing 
 
 **L4 · Context — select what this task may use.** Design, implementation and verification need different inputs. Select relevant, permitted source revisions; expose conflicts and gaps. Required missing information pauses affected work. A knowledge store alone does not perform this selection.
 
-**L3 · Execution — perform bounded development work.** Agents can draft requirements, explore designs, implement changes or assist review. Their harness—the software managing model calls, tools and run state—needs scoped access, isolation and stopping rules. Engineers own the resulting change.
+**L3 · Execution — perform bounded development work.** Agents can draft requirements, explore designs, implement changes or assist review. Work may be an employee-led interactive session, a delegated task in an isolated runner or a repeatable multi-agent delivery cell. Their harness—the software managing model calls, tools and run state—needs scoped access, isolation and stopping rules. Engineers own the resulting change.
 
-**L2 · Control — constrain actions and verify results.** Apply access controls throughout. Evaluate candidates against domain-owned cases, ordinary software tests and security checks. Required evidence and authorization govern release; an agent's completed task does not.
+**L2 · Control — constrain actions and verify results.** Apply access controls throughout. Evaluate candidates against domain-owned cases, ordinary software tests and security checks. Required evidence and authorization govern release; an agent's completed task does not. L2 is the delivery-control responsibility; it consumes identity, policy, security and assurance capabilities from several enterprise platform planes rather than mapping only to the Agentic Enterprise Control Plane.
 
 **L1 · Memory & Evidence — retain decisions and review outcomes.** Link sources, specifications, runs, checks and releases. Record concise rationale, owners and outcomes. Service and domain owners review this experience before promoting reusable guidance into knowledge, context or tests.
 
@@ -84,4 +84,4 @@ Mohit's experience includes production LLM/RAG at Chegg and target-state archite
 
 *Independent architecture proposal. Examples are synthetic; tool combinations require evaluation.*
 
-[Agent authority at runtime](https://github.com/appliedgenai/earned-autonomy) · [CC BY 4.0](LICENSE.md)
+[Agentic Enterprise Blueprint](https://github.com/appliedgenai/agentic-enterprise-blueprint) · [Agent authority at runtime](https://github.com/appliedgenai/earned-autonomy) · [Data products for agents](https://github.com/appliedgenai/agent-data-products) · [CC BY 4.0](LICENSE.md)
